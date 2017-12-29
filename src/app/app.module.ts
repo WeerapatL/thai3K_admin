@@ -3,12 +3,15 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+// import { ActivatedRoute } from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { CategoryComponent } from './category/category.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { InsertDataComponent } from './insert-data/insert-data.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,13 @@ import { HomepageComponent } from './homepage/homepage.component';
     ContactComponent,
     CategoryComponent,
     ProductDetailComponent,
-    HomepageComponent
+    HomepageComponent,
+    InsertDataComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    // ActivatedRoute,
     RouterModule.forRoot([
       {
         path: '',component:HomepageComponent
@@ -36,6 +41,9 @@ import { HomepageComponent } from './homepage/homepage.component';
       },
       {
         path: 'ProductDetail', component: ProductDetailComponent
+      },
+      {
+        path: 'Insert', component: InsertDataComponent
       }
     ])
   ],

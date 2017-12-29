@@ -1,0 +1,13 @@
+.body{
+    text-align: center;
+}
+table, th {
+    border: 2px solid black;
+    border-collapse: collapse;
+    
+}
+
+td{
+    border: 1px solid rgb(165, 158, 158);
+
+}

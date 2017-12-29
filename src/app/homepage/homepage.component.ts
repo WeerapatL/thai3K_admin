@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+// import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { CategoryComponent } from '../category/category.component';
+// import { ActivatedRoute } from '@angular/router/src/router_state';
 
 @Component({
   selector: 'app-homepage',
@@ -9,13 +12,20 @@ import { RouterModule } from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route:Router) { 
+
+  }
 
   ngOnInit() {
   }
 
-  // goCategory(){
-  //   this.router.navigate(['Category']); 
-  // }
+  
+
+  selectedCategory(){
+    // new CategoryComponent(str);
+    var text = 'Hello'
+    this.route.navigate(['../Category',{data:text}])
+  }
 
 }
