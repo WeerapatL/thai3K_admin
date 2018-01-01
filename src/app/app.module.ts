@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
@@ -25,6 +26,7 @@ import { InsertDataComponent } from './insert-data/insert-data.component';
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     // ActivatedRoute,
     RouterModule.forRoot([
       {

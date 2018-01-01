@@ -1,113 +1,91 @@
 <body class="body">
-  <form action="#">
-    รหัสสินค้า
-    <input type="text" name="prodNo">
-    <br> ชื่อสินค้า
-    <input type="text" name="prodName">
-    <br> ชื่อสินค้าภาษาอังกฤษ
-    <input type="text" name="proNameEng">
-    <br> รายละเอียดสินค้า
-    <br>
+  รหัสสินค้า
+  <input type="text" name="prodNo">
+  <br> ชื่อสินค้า
+  <input type="text" name="prodName">
+  <br> ชื่อสินค้าภาษาอังกฤษ
+  <input type="text" name="proNameEng">
+  <br> รายละเอียดสินค้า
+  <br>
+  <small>
     <i>รูปแบบตัวอย่าง(ไม่จำเป็นต้องกรอกให้ครบทั้งหมด)</i>
-    
-    <!-- <table>
-      <tr>
-        <th>
-          ขนาด
-        </th>
-        <th>
-          ราคาขายปลีก
-        </th>
-        <th>
-          ราคาขายส่ง
-        </th>
-        <th>
-          
-        </th>
-        <th>
-          <input type="text" name="tbHead5" placeholder="กรอกหัวข้อที่ต้องการแสดง">
-        </th>
-        <th>
-          <input type="text" name="tbHead6" placeholder="กรอกหัวข้อที่ต้องการแสดง">
-        </th>
-        <th>
-          <input type="text" name="tbHead7" placeholder="กรอกหัวข้อที่ต้องการแสดง">
-        </th>
-        <th>
-          <input type="text" name="tbHead8" placeholder="กรอกหัวข้อที่ต้องการแสดง">
-        </th>
-      </tr>
-      <tr>
-        <td>Jill</td>
-        <td>Smith</td>
-        <td>50</td>
-      </tr>
-      <tr>
-        <td>Eve</td>
-        <td>Jackson</td>
-        <td>94</td>
-      </tr>      
-    </table>
-    <br> -->
+  </small>
+  <br>
+  <br>
 
 
-    <table>
-      <tr>
-        <th>
-          <input type="text" name="tbHead1" placeholder="กรอกหัวข้อของข้อมูล">
-        </th>
-        <th>
-          <input type="text" name="tbHead2" placeholder="กรอกหัวข้อของข้อมูล">
-        </th><th>
-          <input type="text" name="tbHead3" placeholder="กรอกหัวข้อของข้อมูล">
-        </th><th>
-          <input type="text" name="tbHead4" placeholder="กรอกหัวข้อของข้อมูล">
-        </th><th>
-          <input type="text" name="tbHead5" placeholder="กรอกหัวข้อของข้อมูล">
-        </th><th>
-          <input type="text" name="tbHead6" placeholder="กรอกหัวข้อของข้อมูล">
-        </th><th>
-          <input type="text" name="tbHead7" placeholder="กรอกหัวข้อของข้อมูล">
-        </th><th>
-          <input type="text" name="tbHead8" placeholder="กรอกหัวข้อของข้อมูล">
-        </th>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" name="" placeholder="กรอกข้อมูลสินค้า">          
-        </td>
-        <td>
-          <input type="text" name="" placeholder="กรอกข้อมูลสินค้า">
-        </td>
-        <td>
-          <input type="text" name="" placeholder="กรอกข้อมูลสินค้า">          
-        </td>
-        <td>
-          <input type="text" name="" placeholder="กรอกข้อมูลสินค้า">
-        </td>
-        <td>
-          <input type="text" name="" placeholder="กรอกข้อมูลสินค้า">
-        </td>
-        <td>
-          <input type="text" name="" placeholder="กรอกข้อมูลสินค้า">
-        </td>
-        <td>
-          <input type="text" name="" placeholder="กรอกข้อมูลสินค้า">
-        </td>
-        <td>
-          <input type="text" name="" placeholder="กรอกข้อมูลสินค้า">
-        </td>
-      </tr>
-      
-        
-    </table>
-    คำอธิบายเพิ่มเติม
-    <input type="text" name="prodDesc">
-    <br>
-    <input type="text" name="proNameEng">
-    <br>
-    <input type="text" name="proNameEng">
-    <br>
-    <input type="submit" value="Submit">
-  </form>
+<div align="center" class="container">
+
+  <table align="center" >
+    <thead>
+    <tr>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of productDetail">
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.detail1" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.detail2" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.detail3" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.detail4" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.detail5" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.detail6" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.detail7" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.detail8" />
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <button (click)="addRow()">เพิ่มบรรทัดใหม่</button>
+</div>
+
+
+
+
+  <!-- คำอธิบายเพิ่มเติม
+  <input type="text" name="prodDesc">
+  <br>
+  <input type="text" name="proNameEng">
+  <br>
+  <input type="text" name="proNameEng">
+  <br>
+  <input type="submit" value="Submit"> -->
 </body>
