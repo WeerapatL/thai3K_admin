@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
@@ -12,8 +13,7 @@ import { CategoryComponent } from './category/category.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { InsertDataComponent } from './insert-data/insert-data.component';
-import { TestProductComponent } from './test-product/test-product.component';
-import { DataService } from './test-product/service';
+
 
 @NgModule({
   declarations: [
@@ -23,17 +23,16 @@ import { DataService } from './test-product/service';
     ProductDetailComponent,
     HomepageComponent,
     InsertDataComponent,
-    TestProductComponent
+  
   ],
   imports: [
     BrowserModule,
     HttpModule,
     CollapseModule.forRoot(),
+    FormsModule,
     // ActivatedRoute,
     RouterModule.forRoot([
-      {
-        path: 'test',component:TestProductComponent
-      },
+    
       {
         path: '',component:HomepageComponent
       },
@@ -54,8 +53,7 @@ import { DataService } from './test-product/service';
       }
     ])
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/' },
-               DataService
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' }
              ],
   bootstrap: [AppComponent]
 })
