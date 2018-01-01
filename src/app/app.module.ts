@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+import { CollapseModule } from 'ngx-bootstrap';
 // import { ActivatedRoute } from '@angular/router';
-
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
@@ -12,6 +12,8 @@ import { CategoryComponent } from './category/category.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { InsertDataComponent } from './insert-data/insert-data.component';
+import { TestProductComponent } from './test-product/test-product.component';
+import { DataService } from './test-product/service';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,18 @@ import { InsertDataComponent } from './insert-data/insert-data.component';
     CategoryComponent,
     ProductDetailComponent,
     HomepageComponent,
-    InsertDataComponent
+    InsertDataComponent,
+    TestProductComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    CollapseModule.forRoot(),
     // ActivatedRoute,
     RouterModule.forRoot([
+      {
+        path: 'test',component:TestProductComponent
+      },
       {
         path: '',component:HomepageComponent
       },
@@ -47,7 +54,9 @@ import { InsertDataComponent } from './insert-data/insert-data.component';
       }
     ])
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' },
+               DataService
+             ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3657,12 +3657,12 @@ tbody.collapse.show {
 }
 
 .navbar-collapse {
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
-  -ms-flex-positive: 1;
-      flex-grow: 1;
-  -ms-flex-align: center;
-      align-items: center;
+  -ms-flex-preferred-size: 100% !important;
+      flex-basis: 100% !important;
+  -ms-flex-positive: 1 !important;
+      flex-grow: 1 !important;
+  -ms-flex-align: center !important;
+      align-items: center !important;
 }
 
 .navbar-toggler {
