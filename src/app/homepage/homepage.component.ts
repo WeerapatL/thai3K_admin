@@ -31,7 +31,7 @@ export class HomepageComponent implements OnInit {
   }
 
 
-  selectedCategory(BrandParams:string) {
+  selectedBrand(BrandParams:string) {
     // new CategoryComponent(str);
     this.route.navigate(['../Category', { Brand: BrandParams}]);
   }
