@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
-import { CollapseModule } from 'ngx-bootstrap';
+// import { CollapseModule } from 'ngx-bootstrap';
 // import { ActivatedRoute } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -28,7 +28,7 @@ import { Product, TableDetail, Account, Company } from  './dataprovider/DataProv
   imports: [
     BrowserModule,
     HttpModule,
-    CollapseModule.forRoot(),
+    // CollapseModule.forRoot(), 
     FormsModule,
     // ActivatedRoute,
     RouterModule.forRoot([
