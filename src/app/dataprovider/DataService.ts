@@ -17,7 +17,7 @@ export class DataService {
   getBrandProduct(BrandParams:string): Observable<any[]> {
     return this.http.post("/api/backend_product_by_brand.php",{Brand:BrandParams}).map((response:Response) => response.json());
   }
-  getCategoryProduct(CatagoryParams:number): Observable<any[]> {
-    return this.http.post("/api/backend_product_by_category.php",{Brand:CatagoryParams}).map((response:Response) => response.json());
+  getCategoryProduct(CategoryParams:number): Observable<any[]> {
+    return this.http.post("/api/backend_product_by_category.php",{CategoryID:CategoryParams}).map((response:Response) => response.json());
   }
 }
