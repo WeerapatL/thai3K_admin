@@ -4,7 +4,7 @@
     <li class="breadcrumb-item">
       <a [routerLink]="['../Home']">Product</a>
     </li>
-    <li class="breadcrumb-item active">Category</li>
+    <li class="breadcrumb-item active">{{text}}</li>
   </ol>
   <div class="row">
 
@@ -12,16 +12,35 @@
 
       <h1 class="my-4">Shop Name</h1>
       <div class="list-group">
-        <a [routerLink]="['../Category']" [ngClass]="text==='' ? 'list-group-item active':'list-group-item-header'">KANOK products</a>
-        <a [routerLink]="['../Category']" [ngClass]="text==='' ? 'list-group-item active':'list-group-item'">Category 1</a>
-        <a [routerLink]="['../Category']" [ngClass]="text==='' ? 'list-group-item active':'list-group-item'" >Category 2</a>
-        <a [routerLink]="['../Category']" class="list-group-item">Category 1</a>
-        <a [routerLink]="['../Category']" class="list-group-item-header">Nano Electric</a>
-        <a [routerLink]="['../Category']" class="list-group-item">Category 1</a>
-        <a [routerLink]="['../Category']" class="list-group-item">Category 1</a>
-        <a [routerLink]="['../Category']" class="list-group-item">Category 1</a>
-        <a [routerLink]="['../Category']" class="list-group-item">Category 1</a>
-        <a [routerLink]="['../Category']" class="list-group-item">Category 3</a>
+        <a [routerLink]="['../Category']" class="list-group-item-header">KANOK Products</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'">วาล์วน้ำ</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'" >สายส่งน้ำ / ตัวกรองน้ำ</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'">หัวฉีด / สปริงเกอร์</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'">เครื่องตั้งเวลารดน้ำ</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'">ท่อ</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'" >อะไหร่ปั๊ม</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'">อุปกรณ์ตกแต่งสวน / หมวกนิรภัย</a>
+
+
+        <a [routerLink]="['../Category']" class="list-group-item-header">Nano Electrics</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Nano' ? 'list-group-item active':'list-group-item'">กล่อง / ตู้กันน้ำพลาสติก</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Nano' ? 'list-group-item active':'list-group-item'" >แผงไฟฟ้าพลาสติก</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Nano' ? 'list-group-item active':'list-group-item'">สายเคเบิล / รางพลาสติกเก็บสาย</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Nano' ? 'list-group-item active':'list-group-item'">ท่อ / ข้อต่อ</a>
+
+
+        <a [routerLink]="['../Category']" class="list-group-item-header">Zeberg</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">ปลั๊ก / สวิตช์</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'" >สะพานไฟ / วงจร / เบรคเกอร์</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">สายเคเบิล</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">มิเตอร์ไฟฟ้า / ฉนวนไฟฟ้า</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">พัดลม</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">ท่อพีวีซี</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'" >หลอดไฟ / ฟิวส์ / ไซเรน</a>
+        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">ปั้มน้ำ</a>
+        
+        
+      
       </div>
 
     </div>

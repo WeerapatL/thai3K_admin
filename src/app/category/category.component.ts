@@ -12,7 +12,7 @@ import { DataService } from '../dataprovider/DataService';
 export class CategoryComponent implements OnInit {
   text: string;
 
-  BrandProduct: Product[];
+  Product: Product[];
   constructor(private route: ActivatedRoute, public service: DataService) {
     
   }
@@ -21,11 +21,17 @@ export class CategoryComponent implements OnInit {
     this.route.params.subscribe(result => {
       this.text = result['Brand'];
       this.service.getBrandProduct(this.text).subscribe(result => {
-        this.BrandProduct = result;
-        console.log(this.BrandProduct);
+        this.Product = result;
+        console.log(this.Product);
       });
     });
 
+  }
+  getCategoryProduct(CategoryParams : number){
+    this.service.getCategoryProduct(CategoryParams).subscribe(result => {
+      this.Product = result;
+      console.log(this.Product);
+    });
   }
 
 
