@@ -4,7 +4,8 @@
     <li class="breadcrumb-item">
       <a [routerLink]="['../Home']">Product</a>
     </li>
-    <li class="breadcrumb-item active">{{text}}</li>
+    <li class="breadcrumb-item active"  (click)="selectedBrand(brand)">{{brand}}</li>
+    <li id="showCategory" style="display: none" class="breadcrumb-item active"></li>
   </ol>
   <div class="row">
 
@@ -12,32 +13,32 @@
 
       <h1 class="my-4">Shop Name</h1>
       <div class="list-group">
-        <a [routerLink]="['../Category']" class="list-group-item-header">KANOK Products</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'">วาล์วน้ำ</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'" >สายส่งน้ำ / ตัวกรองน้ำ</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'">หัวฉีด / สปริงเกอร์</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'">เครื่องตั้งเวลารดน้ำ</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'">ท่อ</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'" >อะไหร่ปั๊ม</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Kanok' ? 'list-group-item active':'list-group-item'">อุปกรณ์ตกแต่งสวน / หมวกนิรภัย</a>
+        <a  (click)="selectedBrand('Kanok')" class="list-group-item-header">KANOK Products</a>
+        <a id=9 (click)="selectedCategory(9)" [ngClass]="brand=='Kanok' ? 'list-group-item active':'list-group-item'">วาล์วน้ำ</a>
+        <a id=10 (click)="selectedCategory(10)" [ngClass]="brand=='Kanok' ? 'list-group-item active':'list-group-item'" >สายส่งน้ำ / ตัวกรองน้ำ</a>
+        <a id=11 (click)="selectedCategory(11)" [ngClass]="brand=='Kanok' ? 'list-group-item active':'list-group-item'">หัวฉีด / สปริงเกอร์</a>
+        <a id=12 (click)="selectedCategory(12)" [ngClass]="brand=='Kanok' ? 'list-group-item active':'list-group-item'">เครื่องตั้งเวลารดน้ำ</a>
+        <a id=13 (click)="selectedCategory(13)" [ngClass]="brand=='Kanok' ? 'list-group-item active':'list-group-item'">ท่อ</a>
+        <a id=14 (click)="selectedCategory(14)" [ngClass]="brand=='Kanok' ? 'list-group-item active':'list-group-item'" >อะไหร่ปั๊ม</a>
+        <a id=15 (click)="selectedCategory(15)" [ngClass]="brand=='Kanok' ? 'list-group-item active':'list-group-item'">อุปกรณ์ตกแต่งสวน / หมวกนิรภัย</a>
 
 
-        <a [routerLink]="['../Category']" class="list-group-item-header">Nano Electrics</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Nano' ? 'list-group-item active':'list-group-item'">กล่อง / ตู้กันน้ำพลาสติก</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Nano' ? 'list-group-item active':'list-group-item'" >แผงไฟฟ้าพลาสติก</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Nano' ? 'list-group-item active':'list-group-item'">สายเคเบิล / รางพลาสติกเก็บสาย</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Nano' ? 'list-group-item active':'list-group-item'">ท่อ / ข้อต่อ</a>
+        <a  (click)="selectedBrand('Nano')" class="list-group-item-header">Nano Electrics</a>
+        <a id=16 (click)="selectedCategory(16)" [ngClass]="brand=='Nano' ? 'list-group-item active':'list-group-item'">กล่อง / ตู้กันน้ำพลาสติก</a>
+        <a id=17 (click)="selectedCategory(17)" [ngClass]="brand=='Nano' ? 'list-group-item active':'list-group-item'" >แผงไฟฟ้าพลาสติก</a>
+        <a id=18 (click)="selectedCategory(18)" [ngClass]="brand=='Nano' ? 'list-group-item active':'list-group-item'">สายเคเบิล / รางพลาสติกเก็บสาย</a>
+        <a id=19 (click)="selectedCategory(19)" [ngClass]="brand=='Nano' ? 'list-group-item active':'list-group-item'">ท่อ / ข้อต่อ</a>
 
 
-        <a [routerLink]="['../Category']" class="list-group-item-header">Zeberg</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">ปลั๊ก / สวิตช์</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'" >สะพานไฟ / วงจร / เบรคเกอร์</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">สายเคเบิล</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">มิเตอร์ไฟฟ้า / ฉนวนไฟฟ้า</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">พัดลม</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">ท่อพีวีซี</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'" >หลอดไฟ / ฟิวส์ / ไซเรน</a>
-        <a [routerLink]="['../Category']" [ngClass]="text=='Zeberg' ? 'list-group-item active':'list-group-item'">ปั้มน้ำ</a>
+        <a  (click)="selectedBrand('Zeberg')" class="list-group-item-header">Zeberg</a>
+        <a id=1 (click)="selectedCategory(1)" [ngClass]="brand=='Zeberg' ? 'list-group-item active':'list-group-item'">ปลั๊ก / สวิตช์</a>
+        <a id=2 (click)="selectedCategory(2)" [ngClass]="brand=='Zeberg' ? 'list-group-item active':'list-group-item'" >สะพานไฟ / วงจร / เบรคเกอร์</a>
+        <a id=3 (click)="selectedCategory(3)" [ngClass]="brand=='Zeberg' ? 'list-group-item active':'list-group-item'">สายเคเบิล</a>
+        <a id=4 (click)="selectedCategory(4)" [ngClass]="brand=='Zeberg' ? 'list-group-item active':'list-group-item'">มิเตอร์ไฟฟ้า / ฉนวนไฟฟ้า</a>
+        <a id=5 (click)="selectedCategory(5)" [ngClass]="brand=='Zeberg' ? 'list-group-item active':'list-group-item'">พัดลม</a>
+        <a id=6 (click)="selectedCategory(6)" [ngClass]="brand=='Zeberg' ? 'list-group-item active':'list-group-item'">ท่อพีวีซี</a>
+        <a id=7 (click)="selectedCategory(7)" [ngClass]="brand=='Zeberg' ? 'list-group-item active':'list-group-item'" >หลอดไฟ / ฟิวส์ / ไซเรน</a>
+        <a id=8 (click)="selectedCategory(8)" [ngClass]="brand=='Zeberg' ? 'list-group-item active':'list-group-item'">ปั้มน้ำ</a>
         
         
       
@@ -77,17 +78,20 @@
 
       <div class="row">
 
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let p of Product" >
           <div class="card h-100">
             <a href="#">
               <img class="card-img-top" src="http://placehold.it/700x400" alt="">
             </a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="prodDetail.html">Item One</a>
+                <a href="prodDetail.html">{{p.ProductName}}</a>
               </h4>
-              <h5>$24.99</h5>
-              <p class="card-text">Description</p>
+              <h5>{{p.ProductNameEng}}<br>
+                  {{p.ProductBrand}}<br>
+                  {{p.ProductCategory}}
+              </h5>
+              <p class="card-text">{{p.ProductDesc}}</p>
             </div>
             <div class="card-footer">              
               <button type="button" >แก้ไข</button>
@@ -96,98 +100,6 @@
             </div>
           </div>
         </div>
-
-        <!-- <div class="col-lg-4 col-md-6 mb-4">
-          <div class="card h-100">
-            <a href="#">
-              <img class="card-img-top" src="http://placehold.it/700x400" alt="">
-            </a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Item Two</a>
-              </h4>
-              <h5>$24.99</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="card h-100">
-            <a href="prodDetail.html">
-              <img class="card-img-top" src="http://placehold.it/700x400" alt="">
-            </a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Item Three</a>
-              </h4>
-              <h5>$24.99</h5>
-              <p class="card-text">Description</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="card h-100">
-            <a href="#">
-              <img class="card-img-top" src="http://placehold.it/700x400" alt="">
-            </a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Item Four</a>
-              </h4>
-              <h5>$24.99</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="card h-100">
-            <a href="#">
-              <img class="card-img-top" src="http://placehold.it/700x400" alt="">
-            </a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Item Five</a>
-              </h4>
-              <h5>$24.99</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-          <div class="card h-100">
-            <a href="#">
-              <img class="card-img-top" src="http://placehold.it/700x400" alt="">
-            </a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">Item Six</a>
-              </h4>
-              <h5>$24.99</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-            </div>
-          </div>
-        </div> -->
 
       </div>
       <!-- /.row -->
