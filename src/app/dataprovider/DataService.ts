@@ -1,3 +1,4 @@
+import { Product, TableDetail } from './DataProvider';
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
@@ -19,5 +20,17 @@ export class DataService {
   }
   getCategoryProduct(CategoryParams:number): Observable<any[]> {
     return this.http.post("/api/backend_product_by_category.php",{CategoryID:CategoryParams}).map((response:Response) => response.json());
+  }
+  createProduct(Product : Product):Observable<any[]> {
+    return this.http.post("/api/backend_create_product.php",Product).map((response:Response) => response.json());
+  }
+  createProductTableDetail(TableDetail : TableDetail):Observable<any[]> {
+    return this.http.post("/api/backend_create_product_detail.php",TableDetail).map((response:Response) => response.json());
+  }
+  updateProduct(Product : Product):Observable<any[]> {
+    return this.http.post("/api/backend_update_product.php",Product).map((response:Response) => response.json());
+  }
+  updateProductTableDetail(TableDetail : TableDetail):Observable<any[]> {
+    return this.http.post("/api/backend_update_product_detail.php",TableDetail).map((response:Response) => response.json());
   }
 }
