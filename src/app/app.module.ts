@@ -13,8 +13,8 @@ import { CategoryComponent } from './category/category.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { InsertDataComponent } from './insert-data/insert-data.component';
-
-
+import { DataService } from './dataprovider/DataService';
+import { Product, TableDetail, Account, Company } from  './dataprovider/DataProvider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +53,12 @@ import { InsertDataComponent } from './insert-data/insert-data.component';
       }
     ])
   ],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/' }
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' },
+              DataService,
+              Product,
+              TableDetail,
+              Account,
+              Company,
              ],
   bootstrap: [AppComponent]
 })
