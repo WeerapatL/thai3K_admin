@@ -18,14 +18,22 @@ export class InsertDataComponent implements OnInit {
       detail7: '',
       detail8: ''
     }];
+  
+  
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  insertRow() {
-  }
+  // selected(row) {
+  //   if (this.selectedRoundArr.indexOf(round.time) !== -1) {
+  //     this.selectedRoundArr.splice(this.selectedRoundArr.indexOf(round.time), 1)
+  //   } else {
+  //     this.selectedRoundArr.push(round.time);
+  //   }
+  // }
+
 
   addRow() {
     this.productDetail.push({
