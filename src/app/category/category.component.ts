@@ -1,7 +1,6 @@
 import { Product } from './../dataprovider/DataProvider';
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { DataService } from '../dataprovider/DataService';
 
 @Component({
@@ -58,18 +57,18 @@ export class CategoryComponent implements OnInit {
   getCategoryProduct(CategoryParams: number) {
     this.service.getCategoryProduct(CategoryParams).subscribe(result => {
       this.Product = result;
-      
+
       console.log(this.Product);
     });
   }
-  selectedCategory(CategoryParams: number) {   
-   
+  selectedCategory(CategoryParams: number) {
+
     this.router.navigate(['../Category', { Brand: this.brand, CategoryID: CategoryParams }]);
-  
+
   }
-  selectedBrand(BrandParams:string) {
+  selectedBrand(BrandParams: string) {
     // new CategoryComponent(str);
-    this.router.navigate(['../Category', { Brand: BrandParams}]);
+    this.router.navigate(['../Category', { Brand: BrandParams }]);
 
   }
 

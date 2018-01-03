@@ -1,3 +1,111 @@
-<p>
-  product-detail works!
-</p>
+<body>
+
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['../Home']">Product</a>
+      </li>
+      <li class="breadcrumb-item active" (click)="selectedBrand(brand)">{{brand}}</li>
+      <li id="showCategory" style="display: none" class="breadcrumb-item active"></li>
+    </ol>
+    <div class="row">
+
+      <div class="col-lg-3">
+
+        <h1 class="my-4">Shop Name</h1>
+        <div class="list-group">
+          <a (click)="selectedBrand('Kanok')" [ngClass]="brand=='Kanok' ? 'list-group-item-header active':'list-group-item-header'">KANOK Products</a>
+          <a id=9 (click)="selectedCategory(9)" [ngClass]="id==9 ? 'list-group-item active':'list-group-item'">วาล์วน้ำ</a>
+          <a id=10 (click)="selectedCategory(10)" [ngClass]="id==10 ? 'list-group-item active':'list-group-item'">สายส่งน้ำ / ตัวกรองน้ำ</a>
+          <a id=11 (click)="selectedCategory(11)" [ngClass]="id==11 ? 'list-group-item active':'list-group-item'">หัวฉีด / สปริงเกอร์</a>
+          <a id=12 (click)="selectedCategory(12)" [ngClass]="id==12 ? 'list-group-item active':'list-group-item'">เครื่องตั้งเวลารดน้ำ</a>
+          <a id=13 (click)="selectedCategory(13)" [ngClass]="id==13 ? 'list-group-item active':'list-group-item'">ท่อ</a>
+          <a id=14 (click)="selectedCategory(14)" [ngClass]="id==14 ? 'list-group-item active':'list-group-item'">อะไหร่ปั๊ม</a>
+          <a id=15 (click)="selectedCategory(15)" [ngClass]="id==15 ? 'list-group-item active':'list-group-item'">อุปกรณ์ตกแต่งสวน / หมวกนิรภัย</a>
+
+
+          <a (click)="selectedBrand('Nano')" [ngClass]="brand=='Nano' ? 'list-group-item-header active':'list-group-item-header'">Nano Electrics</a>
+          <a id=16 (click)="selectedCategory(16)" [ngClass]="id==16 ? 'list-group-item active':'list-group-item'">กล่อง / ตู้กันน้ำพลาสติก</a>
+          <a id=17 (click)="selectedCategory(17)" [ngClass]="id==17 ? 'list-group-item active':'list-group-item'">แผงไฟฟ้าพลาสติก</a>
+          <a id=18 (click)="selectedCategory(18)" [ngClass]="id==18 ? 'list-group-item active':'list-group-item'">สายเคเบิล / รางพลาสติกเก็บสาย</a>
+          <a id=19 (click)="selectedCategory(19)" [ngClass]="id==19 ? 'list-group-item active':'list-group-item'">ท่อ / ข้อต่อ</a>
+
+
+          <a (click)="selectedBrand('Zeberg')" [ngClass]="brand=='Zeberg' ? 'list-group-item-header active':'list-group-item-header'">Zeberg</a>
+          <a id=1 (click)="selectedCategory(1)" [ngClass]="id==1 ? 'list-group-item active':'list-group-item'">ปลั๊ก / สวิตช์</a>
+          <a id=2 (click)="selectedCategory(2)" [ngClass]="id==2 ? 'list-group-item active':'list-group-item'">สะพานไฟ / วงจร / เบรคเกอร์</a>
+          <a id=3 (click)="selectedCategory(3)" [ngClass]="id==3 ? 'list-group-item active':'list-group-item'">สายเคเบิล</a>
+          <a id=4 (click)="selectedCategory(4)" [ngClass]="id==4 ? 'list-group-item active':'list-group-item'">มิเตอร์ไฟฟ้า / ฉนวนไฟฟ้า</a>
+          <a id=5 (click)="selectedCategory(5)" [ngClass]="id==5 ? 'list-group-item active':'list-group-item'">พัดลม</a>
+          <a id=6 (click)="selectedCategory(6)" [ngClass]="id==6 ? 'list-group-item active':'list-group-item'">ท่อพีวีซี</a>
+          <a id=7 (click)="selectedCategory(7)" [ngClass]="id==7 ? 'list-group-item active':'list-group-item'">หลอดไฟ / ฟิวส์ / ไซเรน</a>
+          <a id=8 (click)="selectedCategory(8)" [ngClass]="id==8 ? 'list-group-item active':'list-group-item'">ปั้มน้ำ</a>
+
+
+
+        </div>
+
+      </div>
+      <!-- /.col-lg-3 -->
+
+      <div class="col-lg-9">
+
+        <div class="card mt-4">
+          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+          <div class="card-body">
+            <h3 class="card-title">Product Name</h3>
+            <h4>$24.99</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere,
+              soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
+            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+            4.0 stars
+          </div>
+        </div>
+        <!-- /.card -->
+
+        <div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            Product Reviews
+          </div>
+          <div class="card-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus
+              neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae
+              sint natus.</p>
+            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+            <hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus
+              neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae
+              sint natus.</p>
+            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+            <hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus
+              neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae
+              sint natus.</p>
+            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+            <hr>
+            <!-- <a href="#" class="btn btn-success">Leave a Review</a> -->
+          </div>
+        </div>
+        <!-- /.card -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
