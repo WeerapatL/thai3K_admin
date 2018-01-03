@@ -1,92 +1,100 @@
 <body class="body">
   รหัสสินค้า
-  <input type="text" name="prodNo">
+  <input type="text">
   <br> ชื่อสินค้า
-  <input type="text" name="prodName">
+  <input type="text">
   <br> ชื่อสินค้าภาษาอังกฤษ
-  <input type="text" name="proNameEng">
-  <br> รายละเอียดสินค้า
-  <br>
- 
+  <input type="text">
+  <br> คำอธิบายสินค้า
+  <input type="text">
+  <br> รูปภาพสินค้า
+  <input type="file" accept="image/*">
+  <br> 
+  <select [(ngModel)]="selectedBrand" (change)="filterCateByBrand(selectedBrand)">
+    <option *ngFor="let brand of getCategory.brand" value="{{brand.name}}">{{brand.name}}</option>
+  </select>
+  <select [(ngModel)]="selectedCategory">
+    <option *ngFor="let category of showCateArray" value="{{category}}">{{category}}</option>
+  </select>
   <small>
     <i>รูปแบบตัวอย่าง(ไม่จำเป็นต้องกรอกให้ครบทั้งหมด)</i>
   </small>
   <br>
   <br>
-  
+
 
 
   <!-- <div align="center" class="container"> -->
 
   <table align="center" class="container">
     <thead>
-    <tr>
+      <tr>
         <th class="header">
-            <input class="input" type="checkbox" [(ngModel)]="checkAll" (click)=selectAllRow() />
-          </th>
-      <th class="header">
-        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
-      </th>
-      <th class="header">
-        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
-      </th>
-      <th class="header">
-        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
-      </th>
-      <th class="header">
-        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
-      </th>
-      <th class="header">
-        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
-      </th>
-      <th class="header">
-        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
-      </th>
-      <th class="header">
-        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
-      </th>
-      <th class="header">
-        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of productDetail">
-          <td>
-            <input class="input" type="checkbox"  [(ngModel)]="row.Status" (click)=selectRow(row) />
-          </td>
-      <td>
-        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail1" />
-      </td>
-      <td>
-        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail2" />
-      </td>
-      <td>
-        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail3" />
-      </td>
-      <td>
-        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail4" />
-      </td>
-      <td>
-        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail5" />
-      </td>
-      <td>
-        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail6" />
-      </td>
-      <td>
-        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail7" />
-      </td>
-      <td>
-        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail8" />
-      </td>
-    </tr>
+          <input class="input" type="checkbox" [(ngModel)]="checkAll" (click)=selectAllRow() />
+        </th>
+        <th class="header">
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+        </th>
+        <th class="header">
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+        </th>
+        <th class="header">
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+        </th>
+        <th class="header">
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+        </th>
+        <th class="header">
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+        </th>
+        <th class="header">
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+        </th>
+        <th class="header">
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+        </th>
+        <th class="header">
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of productDetail">
+        <td>
+          <input class="input" type="checkbox" [(ngModel)]="row.Status" (click)=selectRow(row) />
+        </td>
+        <td>
+          <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail1" />
+        </td>
+        <td>
+          <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail2" />
+        </td>
+        <td>
+          <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail3" />
+        </td>
+        <td>
+          <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail4" />
+        </td>
+        <td>
+          <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail5" />
+        </td>
+        <td>
+          <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail6" />
+        </td>
+        <td>
+          <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail7" />
+        </td>
+        <td>
+          <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail8" />
+        </td>
+      </tr>
     </tbody>
   </table>
   <!-- <button (click)="selectAllRow()">เลือกบรรทัดทั้งหมด</button> -->
   <button (click)="addRow()">เพิ่มบรรทัด</button>
   <button (click)="deleteRow()">ลบบรรทัด</button>
   <!-- <button (click)="deleteLastRow()">ลบบรรทัดสุดท้าย</button> -->
-<!-- </div> -->
+  <!-- </div> -->
 
 
 

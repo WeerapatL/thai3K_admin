@@ -2,7 +2,8 @@
 import { TableDetail } from './../dataprovider/DataProvider';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { Category } from '../dataprovider/DataProvider';
+import { CategoryComponent } from '../category/category.component';
 
 
 @Component({
@@ -12,12 +13,21 @@ import { FormsModule } from '@angular/forms';
 })
 export class InsertDataComponent implements OnInit {
 
+  getCategory: Category;
+  selectedBrand:string;
+  selectedCategory:string;
+  
+  showCateArray:any[];
   t: TableDetail;
   productDetail: any[] = [];
   runningIndex = 0;
   checkAll: boolean = false;
 
   constructor() {
+    this.getCategory = new Category();
+    
+    console.log(this.getCategory.brand);
+    
     this.t = new TableDetail();
     this.t.TableDetailNo = 0;
     this.t.TableDetail1 = null;
@@ -35,7 +45,15 @@ export class InsertDataComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
+  filterCateByBrand(brand){
+    for(let i=0;i<this.getCategory.brand.length;i++){
+      if(this.getCategory.brand[i].name==brand){
+        this.showCateArray = this.getCategory.brand[i].category;
+        break;
+      }
+    }    
+  }
 
 
   addRow() {
