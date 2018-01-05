@@ -13,6 +13,7 @@ export class CategoryComponent implements OnInit {
   id: number;
   CategoryComponent
   Product: Product[];
+
   constructor(private route: ActivatedRoute, public service: DataService, public router: Router) {
 
   }
@@ -21,8 +22,6 @@ export class CategoryComponent implements OnInit {
     this.route.params.subscribe(result => {
       this.brand = result['Brand'];
       this.id = result['CategoryID'];
-      console.log(this.id);
-      console.log(this.brand);
       if (this.id != undefined || this.brand != undefined) {
         if (this.id != undefined) {
           this.getCategoryProduct(this.id);

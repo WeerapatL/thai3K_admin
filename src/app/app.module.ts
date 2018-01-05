@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 // import { CollapseModule } from 'ngx-bootstrap';
 // import { ActivatedRoute } from '@angular/router';
 
@@ -15,6 +17,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { InsertDataComponent } from './insert-data/insert-data.component';
 import { DataService } from './dataprovider/DataService';
 import { Product, TableDetail, Account, Company } from  './dataprovider/DataProvider';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +54,7 @@ import { Product, TableDetail, Account, Company } from  './dataprovider/DataProv
       {
         path: 'Insert', component: InsertDataComponent
       }
-    ])
+    ]),
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: '/' },
               DataService,

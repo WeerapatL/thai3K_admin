@@ -9,7 +9,7 @@
   <input type="text">
   <br> รูปภาพสินค้า
   <input type="file" accept="image/*">
-  <br> 
+  <br>
   <select [(ngModel)]="selectedBrand" (change)="filterCateByBrand(selectedBrand)">
     <option *ngFor="let brand of getCategory.brand" value="{{brand.name}}">{{brand.name}}</option>
   </select>
@@ -22,8 +22,10 @@
   <br>
   <br>
 
+  <button (click)="alert()">Open dialog</button>
+  
+ 
 
-<button (click)="alert()">Click</button>
   <!-- <div align="center" class="container"> -->
 
   <table align="center" class="container">

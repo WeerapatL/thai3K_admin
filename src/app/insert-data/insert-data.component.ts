@@ -1,10 +1,10 @@
 
 import { TableDetail } from './../dataprovider/DataProvider';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Inject} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Category } from '../dataprovider/DataProvider';
 import { CategoryComponent } from '../category/category.component';
-
+// import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-insert-data',
@@ -56,7 +56,15 @@ export class InsertDataComponent implements OnInit {
   }
 
   alert(){
-    alert("Hello");
+    //ถ้าหัวตารางว่าง 8 ช่อง
+    alert('กรุณากรอกหัวข้อของรายละเอียดสินค้า');
+    //ถ้าข้อมูลรายละเอียดว่าง 8 ช่อง
+    alert('กรุณากรอกรายละเอียดของสินค้าอย่างน้อย 1 ช่อง'); 
+    //ถ้ารหัสสินค้าว่าง
+    alert('กรุณากรอกรหัสสินค้า');
+    //ถ้า cate & brand
+    alert('กรุณาเลือก category และ brand ของสินค้า');
+    
   }
 
 
