@@ -69,6 +69,10 @@ export class InsertDataComponent implements OnInit {
     }
   }
 
+  alert(){
+    alert("Hello");
+  }
+
 
   addRow() {
     var t = new TableDetail();
