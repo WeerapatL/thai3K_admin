@@ -8,7 +8,6 @@ import { APP_BASE_HREF } from '@angular/common';
 // import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 // import { CollapseModule } from 'ngx-bootstrap';
 // import { ActivatedRoute } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { CategoryComponent } from './category/category.component';
@@ -26,7 +25,7 @@ import { Product, TableDetail, Account, Company } from  './dataprovider/DataProv
     ProductDetailComponent,
     HomepageComponent,
     InsertDataComponent,
-  
+    
   ],
   imports: [
     BrowserModule,
@@ -62,6 +61,7 @@ import { Product, TableDetail, Account, Company } from  './dataprovider/DataProv
               TableDetail,
               Account,
               Company,
+              
              ],
   bootstrap: [AppComponent]
 })

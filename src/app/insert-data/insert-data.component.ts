@@ -1,10 +1,12 @@
 
-import { TableDetail } from './../dataprovider/DataProvider';
-import { Component, OnInit ,Inject} from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Category } from '../dataprovider/DataProvider';
 import { CategoryComponent } from '../category/category.component';
 // import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { TableDetail, Product } from './../dataprovider/DataProvider';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Category } from '../dataprovider/DataProvider';
+import { DataService } from '../dataprovider/DataService';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-insert-data',
@@ -12,22 +14,37 @@ import { CategoryComponent } from '../category/category.component';
   styleUrls: ['./insert-data.component.css']
 })
 export class InsertDataComponent implements OnInit {
+  @ViewChild('fileInput') fileInput;
+  hasBaseDropZoneOver: boolean = false;
 
-  getCategory: Category;
-  selectedBrand:string;
-  selectedCategory:string;
-  
-  showCateArray:any[];
-  t: TableDetail;
+  //from Ng Model
+  selectedBrand: string;
+  selectedCategory: string;
+  ProductName: string;
+  ProductNameEng: string;
+  ProductDesc: string;
+  ProductImgPath: string;
+  ProductCode: string;
   productDetail: any[] = [];
+  TableHead1: string;
+  TableHead2: string;
+  TableHead3: string;
+  TableHead4: string;
+  TableHead5: string;
+  TableHead6: string;
+  TableHead7: string;
+  TableHead8: string;
+  getCategory: Category;
+  showCateArray: any[];
+  t: TableDetail;
   runningIndex = 0;
   checkAll: boolean = false;
 
-  constructor() {
+  constructor(public service: DataService) {
     this.getCategory = new Category();
-    
+
     console.log(this.getCategory.brand);
-    
+
     this.t = new TableDetail();
     this.t.TableDetailNo = 0;
     this.t.TableDetail1 = null;
@@ -45,26 +62,35 @@ export class InsertDataComponent implements OnInit {
 
   ngOnInit() {
   }
-  
-  filterCateByBrand(brand){
-    for(let i=0;i<this.getCategory.brand.length;i++){
-      if(this.getCategory.brand[i].name==brand){
+
+  filterCateByBrand(brand) {
+    for (let i = 0; i < this.getCategory.brand.length; i++) {
+      if (this.getCategory.brand[i].name == brand) {
         this.showCateArray = this.getCategory.brand[i].category;
         break;
       }
-    }    
+    }
   }
 
-  alert(){
-    //ถ้าหัวตารางว่าง 8 ช่อง
-    alert('กรุณากรอกหัวข้อของรายละเอียดสินค้า');
-    //ถ้าข้อมูลรายละเอียดว่าง 8 ช่อง
-    alert('กรุณากรอกรายละเอียดของสินค้าอย่างน้อย 1 ช่อง'); 
-    //ถ้ารหัสสินค้าว่าง
-    alert('กรุณากรอกรหัสสินค้า');
-    //ถ้า cate & brand
-    alert('กรุณาเลือก category และ brand ของสินค้า');
-    
+  alert(status:boolean,parameter){
+    parameter='';
+    if(status){
+      document.getElementById('id01').style.display='block'
+      if ([parameter == '']) {//ถ้าหัวตารางว่าง 8 ช่อง
+        document.getElementById('id01').innerHTML = 'กรุณากรอกหัวข้อของรายละเอียดสินค้า';          
+      } else if (parameter == '') {//ถ้าข้อมูลรายละเอียดว่าง 8 ช่อง
+        document.getElementById('id01').innerHTML = 'กรุณากรอกรายละเอียดของสินค้าอย่างน้อย 1 ช่อง';          
+
+      }else if(parameter==''){//ถ้ารหัสสินค้าว่าง
+        document.getElementById('id01').innerHTML = 'กรุณากรอกรหัสสินค้า';          
+
+      }else if(parameter==''){//ถ้า cate & brand
+        document.getElementById('id01').innerHTML = 'กรุณาเลือก category และ brand ของสินค้า';          
+
+      }
+    }else{
+      document.getElementById('id01').style.display='none';
+    }
   }
 
 
@@ -114,7 +140,7 @@ export class InsertDataComponent implements OnInit {
       this.checkAll = false;
     }
   }
-  
+
   selectRow(obj: any) {
     if (obj.Status) {
       obj.Status = false;
@@ -122,4 +148,77 @@ export class InsertDataComponent implements OnInit {
       obj.Status = true;
     }
   }
-}
+
+
+  formValidation() {
+    if (this.selectedBrand == undefined || this.selectedCategory == undefined || this.ProductCode == undefined || this.ProductCode == '') {
+      console.log("category and Code Checking Undefined");
+    }
+    else {
+      if ((this.TableHead1 == undefined && this.TableHead2 == undefined && this.TableHead3 == undefined && this.TableHead4 == undefined &&
+        this.TableHead5 == undefined && this.TableHead6 == undefined && this.TableHead7 == undefined && this.TableHead8 == undefined) ||
+        (this.TableHead1 == '' && this.TableHead2 == '' && this.TableHead3 == '' && this.TableHead4 == '' &&
+          this.TableHead5 == '' && this.TableHead6 == '' && this.TableHead7 == '' && this.TableHead8 == '')) {
+        console.log(" ALERT TableHead null all inbox ");
+      } else {
+
+        let fileBrowser = this.fileInput.nativeElement;
+        if (fileBrowser.files && fileBrowser.files[0]) {
+          console.log(fileBrowser.files[0]);
+          this.ProductImgPath = fileBrowser.files[0].name;
+          const formData = new FormData();
+          formData.append("fileToUpload", fileBrowser.files[0]);
+          let alert;
+
+          this.service.uploadImage(formData).subscribe(res => {
+            alert = res.toString();
+            if (alert === "The file " + this.ProductImgPath + " has been uploaded.") {
+              console.log("Picture Upload pass");
+              let productInsert: Product = new Product();
+              productInsert.ProductCode = this.ProductCode;
+              productInsert.ProductName = this.ProductName;
+              productInsert.ProductNameEng = this.ProductNameEng;
+              productInsert.ProductDesc = this.ProductDesc;
+              productInsert.ProductImgPath = this.ProductImgPath;
+              productInsert.TableHead1 = this.TableHead1;
+              productInsert.TableHead2 = this.TableHead2;
+              productInsert.TableHead3 = this.TableHead3;
+              productInsert.TableHead4 = this.TableHead4;
+              productInsert.TableHead5 = this.TableHead5;
+              productInsert.TableHead6 = this.TableHead6;
+              productInsert.TableHead7 = this.TableHead7;
+              productInsert.TableHead8 = this.TableHead8;
+              productInsert.ProductCategoryID = +this.selectedCategory;
+              let obj: any;
+              this.service.createProduct(productInsert).subscribe(result => {
+                obj = result;
+                console.log(obj);
+                for (let i = 0; i <= this.productDetail.length-1; i++) {
+                let tmp: TableDetail = this.productDetail[i].TableDetail;
+                if ((tmp == undefined) || (tmp.TableDetail1 == undefined && tmp.TableDetail2 == undefined && tmp.TableDetail3 == undefined && tmp.TableDetail4 == undefined &&
+                  tmp.TableDetail5 == undefined && tmp.TableDetail6 == undefined && tmp.TableDetail7 == undefined && tmp.TableDetail8 == undefined) ||
+                  (tmp.TableDetail1 == '' && tmp.TableDetail2 == '' && tmp.TableDetail3 == '' && tmp.TableDetail4 == '' &&
+                    tmp.TableDetail5 == '' && tmp.TableDetail6 == '' && tmp.TableDetail7 == '' && tmp.TableDetail8 == '')) {
+                  console.log("skip")
+                } else {
+                  tmp.ProductNo = obj.id;
+                  this.service.createProductTableDetail(tmp).subscribe(result => {
+                    console.log(result);
+                  });
+
+                }
+              }
+              console.log("TableDetail Upload pass");
+              });
+              console.log("Product upload pass");
+            } else {
+              console.log(alert);
+            }
+          });
+        }else{
+          console.log("no file");
+        }
+        }
+      }
+    }
+  }
