@@ -1,5 +1,5 @@
 <body class="body">
-  รหัสสินค้า
+ <!-- รหัสสินค้า
   <input type="text" [(ngModel)]="ProductCode">
   <br> ชื่อสินค้า
   <input type="text" [(ngModel)]="ProductName">
@@ -22,7 +22,7 @@
   <br>
   <br>
 
-  <!-- <div align="center" class="container"> -->
+  <div align="center" class="container">
   <table align="center" class="container">
     <thead>
       <tr>
@@ -87,20 +87,147 @@
       </tr>
     </tbody>
   </table>
-  <!-- <button (click)="selectAllRow()">เลือกบรรทัดทั้งหมด</button> -->
+  <button (click)="selectAllRow()">เลือกบรรทัดทั้งหมด</button>
   <button (click)="addRow()">เพิ่มบรรทัด</button>
   <button (click)="deleteRow()">ลบบรรทัด</button>
-  <!-- <button (click)="deleteLastRow()">ลบบรรทัดสุดท้าย</button> -->
-  <!-- </div> -->
+  <button (click)="deleteLastRow()">ลบบรรทัดสุดท้าย</button>
+  </div>
 
   <button (click)="alert(true,parameter)">Click!</button>
 
   <div id="id01" style="display:none;color:red;">
-        <span (click)="alert(false)" class="w3-button w3-display-topright">&times;</span>
+    <span (click)="alert(false)" class="w3-button w3-display-topright">&times;</span>
   </div>
 
 
   <button type="submit" (click)="formValidation()">Submit</button>
+  <p id="test"></p>  -->
+
+
+  <div class="container">
+    <h2 align="center">เพิ่มสินค้าลงในฐานข้อมูล</h2>
+    <br>
+    <div class="form-group">
+      <label for="prodNo">รหัสสินค้า:</label>
+      <input type="text" class="form-control" placeholder="รหัสสินค้า" [(ngModel)]="ProductCode">
+    </div>
+    <div class="form-group">
+      <label for="prodName">ชื่อสินค้า:</label>
+      <input type="text" class="form-control" placeholder="ชื่อสินค้า" [(ngModel)]="ProductName">
+    </div>
+    <div class="form-group">
+      <label for="prodNameEng">ชื่อสินค้าภาษาอังกฤษ:</label>
+      <input type="text" class="form-control" placeholder="Product Name (English)" [(ngModel)]="ProductNameEng">
+    </div>
+    <label for="prodImg">รูปภาพสินค้า:</label>
+    <input type="file" #fileInput accept=".jpg">
+    <br>
+    <div align="center">
+      <label for="prodBrand">เลือก Brand ของสินค้า:</label>
+      <br>
+      <select id="soflow" [(ngModel)]="selectedBrand" (change)="filterCateByBrand(selectedBrand)">
+        <option *ngFor="let brand of getCategory.brand" value="{{brand.name}}">{{brand.name}}</option>
+      </select>
+      <br>
+      <label for="prodCate">เลือก Category ของสินค้า:</label>
+      <br>
+      <select id="soflow" [(ngModel)]="selectedCategory">
+        <option *ngFor="let category of showCateArray" value="{{category.Value}}">{{category.Catname}}</option>
+      </select>
+    </div>
+  </div>
+  <table id="customers">
+    <tr>
+      <th class="header">
+        <input class="input" type="checkbox" [(ngModel)]="checkAll" (click)=selectAllRow() />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead1" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead2" />
+      </th>
+      <th>
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead3" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead4" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead5" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead6" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead7" />
+      </th>
+      <th class="header">
+        <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead8" />
+      </th>
+    </tr>
+    <tr *ngFor="let row of productDetail">
+      <td>
+        <input class="input" type="checkbox" [(ngModel)]="row.Status" (click)=selectRow(row) />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail1" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail2" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail3" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail4" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail5" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail6" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail7" />
+      </td>
+      <td>
+        <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail8" />
+      </td>
+    </tr>
+  </table>
+
+  <br>
+  <div align="center" class="container">
+    <!-- <button (click)="selectAllRow()">เลือกบรรทัดทั้งหมด</button> -->
+    <button class="click btn-default" (click)="addRow()">เพิ่มบรรทัด</button>
+    <button class="click btn-default" (click)="deleteRow()">ลบบรรทัด</button>
+    <!-- <button (click)="deleteLastRow()">ลบบรรทัดสุดท้าย</button> -->
+
+
+    <button class="click btn-default" (click)="alert(true,parameter)">Click!</button>
+    <br>
+    <div id="id01" style="display:none;color:red;">
+      <span (click)="alert(false)" class="w3-button w3-display-topright">&times;</span>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="prodDesc">คำอธิบายสินค้า:</label>
+      <textarea class="form-control" placeholder="คำอธิบายเกี่ยวกับสินค้า" [(ngModel)]="ProductDesc"></textarea>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div align="center">
+    <button type="submit" class="btn btn-default">เพิ่มสินค้า</button>
+  </div>
   <p id="test"></p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
 
 </body>
