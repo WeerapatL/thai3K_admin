@@ -1,31 +1,27 @@
-<body class="body">
+<body class="body" >
   รหัสสินค้า
-  <input type="text">
+  <input type="text" [(ngModel)]="ProductCode">
   <br> ชื่อสินค้า
-  <input type="text">
+  <input type="text" [(ngModel)]="ProductName">
   <br> ชื่อสินค้าภาษาอังกฤษ
-  <input type="text">
+  <input type="text" [(ngModel)]="ProductNameEng">
   <br> คำอธิบายสินค้า
-  <input type="text">
+  <input type="text" [(ngModel)]="ProductDesc">
   <br> รูปภาพสินค้า
-  <input type="file" accept="image/*">
+  <input type="file" #fileInput accept=".jpg">
   <br> 
   <select [(ngModel)]="selectedBrand" (change)="filterCateByBrand(selectedBrand)">
     <option *ngFor="let brand of getCategory.brand" value="{{brand.name}}">{{brand.name}}</option>
   </select>
   <select [(ngModel)]="selectedCategory">
-    <option *ngFor="let category of showCateArray" value="{{category}}">{{category}}</option>
+    <option *ngFor="let category of showCateArray" value="{{category.Value}}">{{category.Catname}}</option>
   </select>
   <small>
     <i>รูปแบบตัวอย่าง(ไม่จำเป็นต้องกรอกให้ครบทั้งหมด)</i>
   </small>
   <br>
   <br>
-
-
-
   <!-- <div align="center" class="container"> -->
-
   <table align="center" class="container">
     <thead>
       <tr>
@@ -33,28 +29,28 @@
           <input class="input" type="checkbox" [(ngModel)]="checkAll" (click)=selectAllRow() />
         </th>
         <th class="header">
-          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า"  [(ngModel)]="TableHead1" />
         </th>
         <th class="header">
-          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead2" />
         </th>
         <th class="header">
-          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead3" />
         </th>
         <th class="header">
-          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead4" />
         </th>
         <th class="header">
-          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead5" />
         </th>
         <th class="header">
-          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead6" />
         </th>
         <th class="header">
-          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead7"/>
         </th>
         <th class="header">
-          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" />
+          <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead8" />
         </th>
       </tr>
     </thead>
@@ -97,14 +93,9 @@
   <!-- </div> -->
 
 
+  
 
+   <button type="submit" (click)="formValidation()">Submit</button> 
+   <p id="test"></p>
 
-  <!-- คำอธิบายเพิ่มเติม
-  <input type="text" name="prodDesc">
-  <br>
-  <input type="text" name="proNameEng">
-  <br>
-  <input type="text" name="proNameEng">
-  <br>
-  <input type="submit" value="Submit"> -->
 </body>

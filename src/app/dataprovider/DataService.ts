@@ -1,3 +1,4 @@
+import { Angular2TokenService } from 'angular2-token';
 import { Product, TableDetail } from './DataProvider';
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -33,4 +34,9 @@ export class DataService {
   updateProductTableDetail(TableDetail : TableDetail):Observable<any[]> {
     return this.http.post("/api/backend_update_product_detail.php",TableDetail).map((response:Response) => response.json());
   }
+  uploadImage(formData:FormData):Observable<any[]>{
+    return this.http.post("/api/backend_image_upload.php",formData).map((response:Response) => response.json());
+    
+  }
+  
 }

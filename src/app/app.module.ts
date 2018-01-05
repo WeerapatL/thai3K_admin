@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 // import { CollapseModule } from 'ngx-bootstrap';
 // import { ActivatedRoute } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { CategoryComponent } from './category/category.component';
@@ -15,6 +14,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { InsertDataComponent } from './insert-data/insert-data.component';
 import { DataService } from './dataprovider/DataService';
 import { Product, TableDetail, Account, Company } from  './dataprovider/DataProvider';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +23,7 @@ import { Product, TableDetail, Account, Company } from  './dataprovider/DataProv
     ProductDetailComponent,
     HomepageComponent,
     InsertDataComponent,
-  
+    
   ],
   imports: [
     BrowserModule,
@@ -59,6 +59,7 @@ import { Product, TableDetail, Account, Company } from  './dataprovider/DataProv
               TableDetail,
               Account,
               Company,
+              
              ],
   bootstrap: [AppComponent]
 })
