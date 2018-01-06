@@ -1,4 +1,4 @@
-
+import { Router } from '@angular/router';
 import { CategoryComponent } from '../category/category.component';
 // import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { TableDetail, Product } from './../dataprovider/DataProvider';
@@ -40,7 +40,7 @@ export class InsertDataComponent implements OnInit {
   runningIndex = 0;
   checkAll: boolean = false;
 
-  constructor(public service: DataService) {
+  constructor(public service: DataService,public Router:Router) {
     this.getCategory = new Category();
 
     console.log(this.getCategory.brand);
@@ -72,20 +72,26 @@ export class InsertDataComponent implements OnInit {
     }
   }
 
-  alert(status:boolean,parameter){
-    parameter='';
+  alert(status:boolean,parameter:any){
+    
     if(status){
       document.getElementById('id01').style.display='block'
-      if ([parameter == '']) {//ถ้าหัวตารางว่าง 8 ช่อง
+      if (parameter == 1) {//ถ้าหัวตารางว่าง 8 ช่อง
         document.getElementById('id01').innerHTML = 'กรุณากรอกหัวข้อของรายละเอียดสินค้า';          
-      } else if (parameter == '') {//ถ้าข้อมูลรายละเอียดว่าง 8 ช่อง
+      } else if (parameter == 2) {//ถ้าข้อมูลรายละเอียดว่าง 8 ช่อง
         document.getElementById('id01').innerHTML = 'กรุณากรอกรายละเอียดของสินค้าอย่างน้อย 1 ช่อง';          
 
-      }else if(parameter==''){//ถ้ารหัสสินค้าว่าง
+      }else if(parameter==3){//ถ้ารหัสสินค้าว่าง
         document.getElementById('id01').innerHTML = 'กรุณากรอกรหัสสินค้า';          
 
-      }else if(parameter==''){//ถ้า cate & brand
+      }else if(parameter==4){//ถ้า cate & brand
         document.getElementById('id01').innerHTML = 'กรุณาเลือก category และ brand ของสินค้า';          
+
+      }else if(parameter==5){//ถ้า cate & brand
+        document.getElementById('id01').innerHTML = 'กรุณาเลือกไฟล์รูปภาพ';          
+
+      }else if(parameter != ''){//ถ้า cate & brand
+        document.getElementById('id01').innerHTML = parameter;          
 
       }
     }else{
@@ -151,8 +157,13 @@ export class InsertDataComponent implements OnInit {
 
 
   formValidation() {
+    this.alert(false,'');
     if (this.selectedBrand == undefined || this.selectedCategory == undefined || this.ProductCode == undefined || this.ProductCode == '') {
-      console.log("category and Code Checking Undefined");
+      if(this.selectedBrand == undefined || this.selectedCategory == undefined){
+      this.alert(true,4);
+      }if(this.ProductCode == undefined || this.ProductCode == ''){
+      this.alert(true,3)
+      }
     }
     else {
       if ((this.TableHead1 == undefined && this.TableHead2 == undefined && this.TableHead3 == undefined && this.TableHead4 == undefined &&
@@ -160,6 +171,7 @@ export class InsertDataComponent implements OnInit {
         (this.TableHead1 == '' && this.TableHead2 == '' && this.TableHead3 == '' && this.TableHead4 == '' &&
           this.TableHead5 == '' && this.TableHead6 == '' && this.TableHead7 == '' && this.TableHead8 == '')) {
         console.log(" ALERT TableHead null all inbox ");
+        this.alert(true,1);
       } else {
 
         let fileBrowser = this.fileInput.nativeElement;
@@ -211,12 +223,15 @@ export class InsertDataComponent implements OnInit {
               console.log("TableDetail Upload pass");
               });
               console.log("Product upload pass");
+              window.alert("Successfully");
+              window.location.reload();
             } else {
-              console.log(alert);
+              this.alert(true,alert);
             }
           });
         }else{
           console.log("no file");
+          this.alert(true,5);
         }
         }
       }

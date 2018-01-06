@@ -82,7 +82,7 @@
           <div class="col-lg-4 col-md-6 mb-4" *ngFor="let p of Product">
             <div class="card h-10">
               <a href="#">
-                <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+                <img class="card-img-top" src="../../assets/Product/{{p.ProductImgPath}}" alt="">
               </a>
               <div class="card-body">
                 <h5 class="card-title">
@@ -97,7 +97,7 @@
               </div>
               <div class="card-footer">
                 <button type="button">แก้ไข</button>
-                <button type="button" style="background:red;border-width: 1px;color:#fff;">ลบ</button>
+                <button type="button" (click)="deleteProduct(p)" style="background:red;border-width: 1px;color:#fff;">ลบ</button>
                 <!-- <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small> -->
               </div>
             </div>
