@@ -25,13 +25,13 @@ import { Product, TableDetail, Account, Company } from  './dataprovider/DataProv
     ProductDetailComponent,
     HomepageComponent,
     InsertDataComponent,
-    
   ],
   imports: [
     BrowserModule,
     HttpModule,
     // CollapseModule.forRoot(), 
     FormsModule,
+
     // ActivatedRoute,
     RouterModule.forRoot([
     

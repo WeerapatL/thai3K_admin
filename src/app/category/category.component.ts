@@ -70,5 +70,12 @@ export class CategoryComponent implements OnInit {
     this.router.navigate(['../Category', { Brand: BrandParams }]);
 
   }
+  deleteProduct(p:Product){
+    this.service.deleteProduct(p).subscribe(result =>{
+      console.log(result);
+    })
+    let index = this.Product.indexOf(p);
+    this.Product.splice(index,1);
+  }
 
 }

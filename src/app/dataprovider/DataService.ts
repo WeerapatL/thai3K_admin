@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/Rx';  
 
 
+
 @Injectable()
 export class DataService {
 
@@ -36,7 +37,12 @@ export class DataService {
   }
   uploadImage(formData:FormData):Observable<any[]>{
     return this.http.post("/api/backend_image_upload.php",formData).map((response:Response) => response.json());
-    
+  }
+  deleteProduct(Product:Product):Observable<any[]>{
+    return this.http.post("/api/backend_delete_product.php",Product).map((response:Response)=> response.json());
+  }
+  getCompany(): Observable<any[]> {
+    return this.http.post("/api/backend_company.php","").map((response:Response) => response.json());
   }
   
 }

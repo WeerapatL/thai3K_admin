@@ -39,13 +39,15 @@ export class Account {
 export class Company {
     CompanyNo: number;
     CompanyName: string;
+    CompanySubName: string;
     CompanyDesc: string;
-    Email: string;
-    Tel: string;
-    Facebook: string;
-    Line: string;
-    Address: string;
-    QRCode: string
+    CompanyEmail: string;
+    CompanyTel: string;
+    CompanyFacebook: string;
+    CompanyLine: string;
+    CompanyAddress: string;
+    CompanyQRCode: string
+    CompanyMap: string
 }
 
 export class Category {
