@@ -1,7 +1,10 @@
 
 import { Component } from '@angular/core';
 import { ContactComponent } from './contact/contact.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { DataService } from './dataprovider/DataService';
+import { Company } from './dataprovider/DataProvider';
+
 
 
 @Component({
@@ -12,5 +15,10 @@ import { RouterModule } from '@angular/router';
 
 export class AppComponent {
   title = 'Thai3K';
-
+  company = new Company();
+  constructor(public service: DataService,public router : Router) {
+    this.service.getCompany().subscribe(result => {
+      this.company = result[0];
+    });
+  }
 }

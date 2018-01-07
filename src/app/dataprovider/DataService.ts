@@ -1,5 +1,5 @@
 // import { Angular2TokenService } from 'angular2-token';
-import { Product, TableDetail } from './DataProvider';
+import { Product, TableDetail, Company } from './DataProvider';
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
@@ -44,5 +44,10 @@ export class DataService {
   getCompany(): Observable<any[]> {
     return this.http.post("/api/backend_company.php","").map((response:Response) => response.json());
   }
-  
+  companyUpdate(c:Company):Observable<any[]> {
+    return this.http.post("/api/backend_update_company.php",c).map((response:Response) => response.json());
+  }
+  uploadResource(formData:FormData):Observable<any[]>{
+    return this.http.post("/api/backend_resource_upload.php",formData).map((response:Response) => response.json());
+  }
 }
