@@ -95,6 +95,7 @@
             <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
             4.0 stars -->
           </div>
+
         </div>
         <!-- /.card -->
 
@@ -102,10 +103,12 @@
           <div class="card-header">
             รายละเอียดสินค้า
           </div>
+
         </div>
-        <table id="customers" class="tb">
-          <tr class="tb">
-            <th class="tb">
+        <table id="customers">
+          <tr>
+           
+            <th class="header">
               <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead1" />
             </th>
             <th class="header">
@@ -131,7 +134,7 @@
             </th>
           </tr>
           <tr>
-           
+          
             <td>
               <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail1" />
             </td>
@@ -158,7 +161,7 @@
             </td>
           </tr>
         </table>
-
+        <br>
         <div align="center">
           <button (click)="formValidation()" type="submit">บันทึก</button>
         </div>
