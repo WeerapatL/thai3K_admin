@@ -1,9 +1,4 @@
 
-/* .container{
-    border-radius: 10px;
-    border: 1px solid #000;
-} */
-
 select#soflow, select#soflow-color {
    -webkit-appearance: button;
    -webkit-border-radius: 2px;

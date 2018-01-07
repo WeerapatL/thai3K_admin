@@ -4,7 +4,7 @@ import { DataService } from '../dataprovider/DataService';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['../../css/shop-item.css', '../../vendor/bootstrap/css/bootstrap.min.css']
+  styleUrls: ['../../css/shop-item.css', '../../vendor/bootstrap/css/bootstrap.min.css','./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
 
