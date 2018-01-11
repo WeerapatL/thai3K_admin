@@ -19,7 +19,7 @@ export class ContactComponent implements OnInit {
   constructor(public service: DataService, public sanitizer: DomSanitizer) {
     this.service.getCompany().subscribe(result => {
       this.company = result[0];
-      this.mapURL = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?" + this.company.CompanyMap + "&key=AIzaSyCkzqdgpcz0LKBI22ftmPovYT-6vnKf4RA");
+      this.mapURL = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?" + this.company.CompanyMap + "&key=AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U");
     });
   }
 

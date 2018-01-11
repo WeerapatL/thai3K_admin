@@ -40,7 +40,7 @@ export class CategoryComponent implements OnInit {
         } else {
           if (this.brand != undefined) {
             this.service.getBrandProduct(this.brand).subscribe(result => {
-              this.Product = result;
+              this.Product = result.reverse();
               console.log(this.Product);
             });
             document.getElementById('showCategory').style.display = "none";

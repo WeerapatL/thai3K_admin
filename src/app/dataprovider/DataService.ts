@@ -1,4 +1,3 @@
-// import { Angular2TokenService } from 'angular2-token';
 import { Product, TableDetail, Company } from './DataProvider';
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';

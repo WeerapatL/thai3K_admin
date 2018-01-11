@@ -80,13 +80,13 @@
         <div class="row">
 
           <div class="col-lg-4 col-md-6 mb-4" *ngFor="let p of Product">
-            <div class="card h-10">
+            <div [routerLink]="['../ProductDetail']" class="card h-10">
               <a href="#">
                 <img class="card-img-top" src="../../assets/Product/{{p.ProductImgPath}}" alt="">
               </a>
               <div class="card-body">
                 <h5 class="card-title">
-                  <a [routerLink]="['../ProductDetail']">{{p.ProductName}}</a>
+                  <p>{{p.ProductName}}</p>
                 </h5>
                 <h6>{{p.ProductNameEng}}</h6>
                 <h6>
