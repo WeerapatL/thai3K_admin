@@ -16,9 +16,21 @@ import { Company } from './dataprovider/DataProvider';
 export class AppComponent {
   title = 'Thai3K';
   company = new Company();
-  constructor(public service: DataService,public router : Router) {
+  showNavResponsive: boolean = false;
+
+  constructor(public service: DataService, public router: Router) {
     this.service.getCompany().subscribe(result => {
       this.company = result[0];
     });
+  }
+
+  navResponsive() {
+    this.showNavResponsive = !this.showNavResponsive;
+    if (this.showNavResponsive) {
+      document.getElementById("navbarResponsive").style.display = "block";
+    } else {
+      document.getElementById("navbarResponsive").style.display = "none";
+
+    }
   }
 }
