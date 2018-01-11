@@ -15,7 +15,7 @@ export class CategoryComponent implements OnInit {
   Product: Product[];
 
   constructor(private route: ActivatedRoute, public service: DataService, public router: Router) {
-
+    
   }
 
   ngOnInit() {
@@ -77,5 +77,10 @@ export class CategoryComponent implements OnInit {
     let index = this.Product.indexOf(p);
     this.Product.splice(index,1);
   }
+
+
+  // changeImg(){
+  //   [attr.]
+  // }
 
 }
