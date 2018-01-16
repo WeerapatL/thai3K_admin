@@ -53,6 +53,10 @@ export class Company {
 export class Category {
     brand = [
         {
+            name:'Thai 3K Plastic',
+            category: [{Catname:'สินค้าพลาสติก',Value:20} , {Catname:'สายไฟฟ้าครัวเรือน / ตัวกรองน้ำ',Value:21} , {Catname:'สายไฟฟ้าอุตสาหกรรม',Value:22},{Catname:'อัดฉีดเม็ดโฟมพลาสติก',Value:23}]
+        },
+        {
             name:'KANOK Products',
             category: [{Catname:'วาล์วน้ำ',Value:9} , {Catname:'สายส่งน้ำ / ตัวกรองน้ำ',Value:10} , {Catname:'หัวฉีด / สปริงเกอร์',Value:11},{Catname:'เครื่องตั้งเวลารดน้ำ',Value:12},{Catname:'ท่อ',Value:13},{Catname:'อะไหร่ปั๊ม',Value:14},{Catname:'อุปกรณ์ตกแต่งสวน / หมวกนิรภัย',Value:15}]
         },
