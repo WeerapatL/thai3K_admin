@@ -14,6 +14,12 @@
 
         <h1 class="my-4">Shop Name</h1>
         <div class="list-group">
+          <a (click)="selectedBrand('Thai 3K Plastic')" [ngClass]="brand=='Thai 3K Plastic' ? 'list-group-item-header active':'list-group-item-header'">Thai 3K Plastic</a>
+          <a id=20 (click)="selectedCategory(20)" [ngClass]="id==20 ? 'list-group-item active':'list-group-item'">สินค้าพลาสติก</a>
+          <a id=21 (click)="selectedCategory(21)" [ngClass]="id==21 ? 'list-group-item active':'list-group-item'">สายไฟฟ้าครัวเรือน</a>
+          <a id=22 (click)="selectedCategory(22)" [ngClass]="id==22 ? 'list-group-item active':'list-group-item'">สายไฟฟ้าอุตสาหกรรม</a>
+          <a id=23 (click)="selectedCategory(23)" [ngClass]="id==23 ? 'list-group-item active':'list-group-item'">อัดฉีดเม็ดโฟมพลาสติก</a>
+
           <a (click)="selectedBrand('Kanok')" [ngClass]="brand=='Kanok' ? 'list-group-item-header active':'list-group-item-header'">KANOK Products</a>
           <a id=9 (click)="selectedCategory(9)" [ngClass]="id==9 ? 'list-group-item active':'list-group-item'">วาล์วน้ำ</a>
           <a id=10 (click)="selectedCategory(10)" [ngClass]="id==10 ? 'list-group-item active':'list-group-item'">สายส่งน้ำ / ตัวกรองน้ำ</a>

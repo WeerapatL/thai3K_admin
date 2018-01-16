@@ -36,6 +36,9 @@ export class CategoryComponent implements OnInit {
           if (this.id >= 16 && this.id <= 19) {
             this.brand = 'Nano';
           }
+          if (this.id >= 20 && this.id <= 23) {
+            this.brand = 'Thai 3K Plastic';
+          }
 
         } else {
           if (this.brand != undefined) {
