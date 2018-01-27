@@ -1,6 +1,6 @@
 <body>
-
   <div class="container">
+  
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a [routerLink]="['../Home']">Product</a>
@@ -14,7 +14,13 @@
 
         <h1 class="my-4">Shop Name</h1>
         <div class="list-group">
-          <a (click)="selectedBrand('Kanok')" [ngClass]="brand=='Kanok' ? 'list-group-item-header active':'list-group-item-header'">KANOK Products</a>
+          <a (click)="selectedBrand('Thai 3K Plastic')" [ngClass]="brand=='Thai 3K Plastic' ? 'list-group-item-header active':'list-group-item-header'">Thai 3K Plastic</a>
+          <a id=20 (click)="selectedCategory(20)" [ngClass]="id==20 ? 'list-group-item active':'list-group-item'">สินค้าพลาสติก</a>
+          <a id=21 (click)="selectedCategory(21)" [ngClass]="id==21 ? 'list-group-item active':'list-group-item'">สายไฟฟ้าครัวเรือน</a>
+          <a id=22 (click)="selectedCategory(22)" [ngClass]="id==22 ? 'list-group-item active':'list-group-item'">สายไฟฟ้าอุตสาหกรรม</a>
+          <a id=23 (click)="selectedCategory(23)" [ngClass]="id==23 ? 'list-group-item active':'list-group-item'">อัดฉีดเม็ดโฟมพลาสติก</a>
+
+          <a (click)="selectedBrand('KANOK Products')" [ngClass]="brand=='KANOK Products' ? 'list-group-item-header active':'list-group-item-header'">KANOK Products</a>
           <a id=9 (click)="selectedCategory(9)" [ngClass]="id==9 ? 'list-group-item active':'list-group-item'">วาล์วน้ำ</a>
           <a id=10 (click)="selectedCategory(10)" [ngClass]="id==10 ? 'list-group-item active':'list-group-item'">สายส่งน้ำ / ตัวกรองน้ำ</a>
           <a id=11 (click)="selectedCategory(11)" [ngClass]="id==11 ? 'list-group-item active':'list-group-item'">หัวฉีด / สปริงเกอร์</a>
@@ -24,7 +30,7 @@
           <a id=15 (click)="selectedCategory(15)" [ngClass]="id==15 ? 'list-group-item active':'list-group-item'">อุปกรณ์ตกแต่งสวน / หมวกนิรภัย</a>
 
 
-          <a (click)="selectedBrand('Nano')" [ngClass]="brand=='Nano' ? 'list-group-item-header active':'list-group-item-header'">Nano Electrics</a>
+          <a (click)="selectedBrand('Nano Electrics')" [ngClass]="brand=='Nano Electrics' ? 'list-group-item-header active':'list-group-item-header'">Nano Electrics</a>
           <a id=16 (click)="selectedCategory(16)" [ngClass]="id==16 ? 'list-group-item active':'list-group-item'">กล่อง / ตู้กันน้ำพลาสติก</a>
           <a id=17 (click)="selectedCategory(17)" [ngClass]="id==17 ? 'list-group-item active':'list-group-item'">แผงไฟฟ้าพลาสติก</a>
           <a id=18 (click)="selectedCategory(18)" [ngClass]="id==18 ? 'list-group-item active':'list-group-item'">สายเคเบิล / รางพลาสติกเก็บสาย</a>
@@ -51,20 +57,20 @@
       <div class="col-lg-9">
 
         <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+          <img class="card-img-top img-fluid" src="../../assets/Product/{{Product.ProductImgPath}}" alt="">
           <div class="card-body">
             <h5 align="center">แก้ไขข้อมูลสินค้า</h5>
             <div class="form-group">
               <label for="prodNo">รหัสสินค้า:</label>
-              <input type="text" class="form-control" placeholder="รหัสสินค้า" [(ngModel)]="ProductCode">
+              <input type="text" class="form-control" placeholder="รหัสสินค้า" [(ngModel)]="Product.ProductCode">
             </div>
             <div class="form-group">
               <label for="prodName">ชื่อสินค้า:</label>
-              <input type="text" class="form-control" placeholder="ชื่อสินค้า" [(ngModel)]="ProductName">
+              <input type="text" class="form-control" placeholder="ชื่อสินค้า" [(ngModel)]="Product.ProductName">
             </div>
             <div class="form-group">
               <label for="prodNameEng">ชื่อสินค้าภาษาอังกฤษ:</label>
-              <input type="text" class="form-control" placeholder="Product Name (English)" [(ngModel)]="ProductNameEng">
+              <input type="text" class="form-control" placeholder="Product Name (English)" [(ngModel)]="Product.ProductNameEng">
             </div>
             <label for="prodImg">รูปภาพสินค้า:</label>
             <input type="file" #fileInput accept=".jpg">
@@ -73,20 +79,20 @@
             <div align="center">
               <label for="prodBrand">เลือก Brand ของสินค้า:</label>
               <br>
-              <select id="soflow" [(ngModel)]="selectedBrand" (change)="filterCateByBrand(selectedBrand)">
-                <option *ngFor="let brand of getCategory.brand" value="{{brand.name}}">{{brand.name}}</option>
+              <select id="soflow"  (change)="filterCateByBrand()" [(ngModel)]="Product.ProductBrand">
+                <option  *ngFor="let brand of this.getCategory.brand" [value]="brand.name" >{{brand.name}}</option>
               </select>
               <br>
               <label for="prodCate">เลือก Category ของสินค้า:</label>
               <br>
-              <select id="soflow" [(ngModel)]="selectedCategory">
-                <option *ngFor="let category of showCateArray" value="{{category.Value}}">{{category.Catname}}</option>
+              <select id="soflow" [(ngModel)]="Product.ProductCategoryID">
+                <option  *ngFor="let category of showCateArray" [value]="category.Value" >{{category.Catname}}</option>
               </select>
             </div>
             <br>
             <div class="form-group">
               <label for="prodDesc">คำอธิบายสินค้า:</label>
-              <textarea class="form-control" placeholder="คำอธิบายเกี่ยวกับสินค้า" [(ngModel)]="ProductDesc"></textarea>
+              <textarea class="form-control" placeholder="คำอธิบายเกี่ยวกับสินค้า" [(ngModel)]="Product.ProductDesc"></textarea>
             </div>
             <!-- <h3 class="card-title">Product Name</h3>
             <h4>$24.99</h4>
@@ -107,63 +113,70 @@
         </div>
         <table id="customers">
           <tr>
-           
             <th class="header">
-              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead1" />
+            
             </th>
             <th class="header">
-              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead2" />
+              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="Product.TableHead1" />
+            </th>
+            <th class="header">
+              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="Product.TableHead2" />
             </th>
             <th>
-              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead3" />
+              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="Product.TableHead3" />
             </th>
             <th class="header">
-              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead4" />
+              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="Product.TableHead4" />
             </th>
             <th class="header">
-              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead5" />
+              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="Product.TableHead5" />
             </th>
             <th class="header">
-              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead6" />
+              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="Product.TableHead6" />
             </th>
             <th class="header">
-              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead7" />
+              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="Product.TableHead7" />
             </th>
             <th class="header">
-              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="TableHead8" />
+              <input class="input" type="text" placeholder="กรอกหัวข้อของสินค้า" [(ngModel)]="Product.TableHead8" />
             </th>
           </tr>
-          <tr>
-          
-            <td>
-              <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail1" />
-            </td>
-            <td>
-              <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail2" />
-            </td>
-            <td>
-              <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail3" />
-            </td>
-            <td>
-              <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail4" />
-            </td>
-            <td>
-              <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail5" />
-            </td>
-            <td>
-              <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail6" />
-            </td>
-            <td>
-              <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail7" />
-            </td>
-            <td>
-              <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail.TableDetail8" />
-            </td>
-          </tr>
+          <tr *ngFor="let row of ArrayTableDetail">
+              <td>
+                  <button class="input" type="submit" style="color:white;background-color: red;" (click)="deleteRow(row)">ลบ</button>
+              </td>
+              <td>
+                <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail1" />
+              </td>
+              <td>
+                <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail2" />
+              </td>
+              <td>
+                <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail3" />
+              </td>
+              <td>
+                <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail4" />
+              </td>
+              <td>
+                <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail5" />
+              </td>
+              <td>
+                <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail6" />
+              </td>
+              <td>
+                <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail7" />
+              </td>
+              <td>
+                <input class="input" type="text" placeholder="กรอกข้อมูลตามหัวข้อสินค้า" [(ngModel)]="row.TableDetail8" />
+              </td>
+            </tr>
         </table>
         <br>
         <div align="center">
-          <button (click)="formValidation()" type="submit">บันทึก</button>
+          <p id="id01" style="display:none; color:red;"></p>
+          <button class="click btn-default" (click)="addRow()">เพิ่มบรรทัด</button>
+          <button type="submit" (click)="edit()">บันทึก</button>
+          <ngx-loading [show]="loading"></ngx-loading>
         </div>
         <br>
         <br>

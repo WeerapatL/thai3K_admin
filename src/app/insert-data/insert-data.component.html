@@ -102,14 +102,16 @@
 
     
     <br>
-    <div id="id01" style="display:none;color:red;">
-      <span (click)="alert(false)" class="w3-button w3-display-topright">&times;</span>
-    </div>
     <br>
     <div class="form-group">
       <label for="prodDesc">คำอธิบายสินค้า:</label>
       <textarea class="form-control" placeholder="คำอธิบายเกี่ยวกับสินค้า" [(ngModel)]="ProductDesc"></textarea>
     </div>
+    <br>
+    <div id="id01" style="display:none;color:red;">
+      <span (click)="alert(false)" class="w3-button w3-display-topright">&times;</span>
+    </div>
+    
   </div>
   <br>
   <br>
@@ -123,6 +125,6 @@
   <br>
   <br>
   <br>
-
+  <ngx-loading [show]="loading"></ngx-loading>
 
 </body>

@@ -1,7 +1,8 @@
-import { Product } from './../dataprovider/DataProvider';
+import { Product , DataParsing} from './../dataprovider/DataProvider';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { DataService } from '../dataprovider/DataService';
+
 
 @Component({
   selector: 'app-category',
@@ -31,10 +32,10 @@ export class CategoryComponent implements OnInit {
             this.brand = 'Zeberg';
           }
           if (this.id >= 9 && this.id <= 15) {
-            this.brand = 'Kanok';
+            this.brand = 'KANOK Products';
           }
           if (this.id >= 16 && this.id <= 19) {
-            this.brand = 'Nano';
+            this.brand = 'Nano Electrics';
           }
           if (this.id >= 20 && this.id <= 23) {
             this.brand = 'Thai 3K Plastic';
@@ -58,7 +59,7 @@ export class CategoryComponent implements OnInit {
   }
   getCategoryProduct(CategoryParams: number) {
     this.service.getCategoryProduct(CategoryParams).subscribe(result => {
-      this.Product = result;
+      this.Product = result.reverse();
 
       console.log(this.Product);
     });
@@ -74,16 +75,17 @@ export class CategoryComponent implements OnInit {
 
   }
   deleteProduct(p:Product){
+    if(window.confirm("Are you sure to delete this product?")){
     this.service.deleteProduct(p).subscribe(result =>{
       console.log(result);
     })
     let index = this.Product.indexOf(p);
     this.Product.splice(index,1);
   }
-
-
-  // changeImg(){
-  //   [attr.]
-  // }
+  }
+  editProduct(p:Product){
+    var myJSON = JSON.stringify(p);
+    this.router.navigate(['../ProductDetail',{Product : myJSON}],{skipLocationChange:true});
+  }
 
 }

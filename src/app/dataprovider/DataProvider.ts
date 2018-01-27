@@ -54,7 +54,7 @@ export class Category {
     brand = [
         {
             name:'Thai 3K Plastic',
-            category: [{Catname:'สินค้าพลาสติก',Value:20} , {Catname:'สายไฟฟ้าครัวเรือน / ตัวกรองน้ำ',Value:21} , {Catname:'สายไฟฟ้าอุตสาหกรรม',Value:22},{Catname:'อัดฉีดเม็ดโฟมพลาสติก',Value:23}]
+            category: [{Catname:'สินค้าพลาสติก',Value:20} , {Catname:'สายไฟฟ้าครัวเรือน',Value:21} , {Catname:'สายไฟฟ้าอุตสาหกรรม',Value:22},{Catname:'อัดฉีดเม็ดโฟมพลาสติก',Value:23}]
         },
         {
             name:'KANOK Products',
@@ -69,4 +69,13 @@ export class Category {
             category: [{Catname:'ปลั๊ก / สวิตช์',Value:1}, {Catname:'สะพานไฟ / วงจร / เบรคเกอร์',Value:2}, {Catname:'สายเคเบิล',Value:3}, {Catname:'มิเตอร์ไฟฟ้า / ฉนวนไฟฟ้า',Value:4},{Catname: 'พัดลม',Value:5} ,{Catname:'ท่อพีวีซี',Value:6}, {Catname:'หลอดไฟ / ฟิวส์ / ไซเรน',Value:7},{Catname:'ปั้มน้ำ',Value:8}]
         }
     ]
+}
+export class DataParsing {
+    static item:Product;
+    static getProduct():Product{
+        return this.item;
+    }
+    static setProduct(p:Product){
+        this.item = p;
+    }
 }

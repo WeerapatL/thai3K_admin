@@ -39,7 +39,7 @@ export class InsertDataComponent implements OnInit {
   t: TableDetail;
   runningIndex = 0;
   checkAll: boolean = false;
-
+  loading = false;
   constructor(public service: DataService,public Router:Router) {
     this.getCategory = new Category();
 
@@ -73,7 +73,7 @@ export class InsertDataComponent implements OnInit {
   }
 
   alert(status:boolean,parameter:any){
-    
+    this.loading = false;
     if(status){
       document.getElementById('id01').style.display='block'
       if (parameter == 1) {//ถ้าหัวตารางว่าง 8 ช่อง
@@ -158,6 +158,7 @@ export class InsertDataComponent implements OnInit {
 
   formValidation() {
     this.alert(false,'');
+    this.loading = true;
     if (this.selectedBrand == undefined || this.selectedCategory == undefined || this.ProductCode == undefined || this.ProductCode == '') {
       if(this.selectedBrand == undefined || this.selectedCategory == undefined){
       this.alert(true,4);
@@ -173,7 +174,21 @@ export class InsertDataComponent implements OnInit {
         console.log(" ALERT TableHead null all inbox ");
         this.alert(true,1);
       } else {
-
+        let count = this.productDetail.length;
+        for (let j = 0; j <= count - 1; j++) {
+          for (let i = 0; i <= this.productDetail.length - 1; i++) {
+            if ((this.productDetail[i].TableDetail.TableDetail1 == '' || this.productDetail[i].TableDetail.TableDetail1 == null) &&
+              (this.productDetail[i].TableDetail.TableDetail2 == '' || this.productDetail[i].TableDetail.TableDetail2 == null) &&
+              (this.productDetail[i].TableDetail.TableDetail3 == '' || this.productDetail[i].TableDetail.TableDetail3 == null) &&
+              (this.productDetail[i].TableDetail.TableDetail4 == '' || this.productDetail[i].TableDetail.TableDetail4 == null) &&
+              (this.productDetail[i].TableDetail.TableDetail5 == '' || this.productDetail[i].TableDetail.TableDetail5 == null) &&
+              (this.productDetail[i].TableDetail.TableDetail6 == '' || this.productDetail[i].TableDetail.TableDetail6 == null) &&
+              (this.productDetail[i].TableDetail.TableDetail7 == '' || this.productDetail[i].TableDetail.TableDetail7 == null) &&
+              (this.productDetail[i].TableDetail.TableDetail8 == '' || this.productDetail[i].TableDetail.TableDetail8 == null)) {
+              this.productDetail.splice(i, 1);
+            }
+          }
+        }if(this.productDetail.length != 0){
         let fileBrowser = this.fileInput.nativeElement;
         if (fileBrowser.files && fileBrowser.files[0]) {
           console.log(fileBrowser.files[0]);
@@ -205,26 +220,8 @@ export class InsertDataComponent implements OnInit {
               this.service.createProduct(productInsert).subscribe(result => {
                 obj = result;
                 console.log(obj);
-                for (let i = 0; i <= this.productDetail.length-1; i++) {
-                let tmp: TableDetail = this.productDetail[i].TableDetail;
-                if ((tmp == undefined) || (tmp.TableDetail1 == undefined && tmp.TableDetail2 == undefined && tmp.TableDetail3 == undefined && tmp.TableDetail4 == undefined &&
-                  tmp.TableDetail5 == undefined && tmp.TableDetail6 == undefined && tmp.TableDetail7 == undefined && tmp.TableDetail8 == undefined) ||
-                  (tmp.TableDetail1 == '' && tmp.TableDetail2 == '' && tmp.TableDetail3 == '' && tmp.TableDetail4 == '' &&
-                    tmp.TableDetail5 == '' && tmp.TableDetail6 == '' && tmp.TableDetail7 == '' && tmp.TableDetail8 == '')) {
-                  console.log("skip")
-                } else {
-                  tmp.ProductNo = obj.id;
-                  this.service.createProductTableDetail(tmp).subscribe(result => {
-                    console.log(result);
-                  });
-
-                }
-              }
-              console.log("TableDetail Upload pass");
+                this.createTableDetail2(0,this.productDetail.length-1,obj.id);          
               });
-              console.log("Product upload pass");
-              window.alert("Successfully");
-              window.location.reload();
             } else {
               this.alert(true,alert);
             }
@@ -233,7 +230,22 @@ export class InsertDataComponent implements OnInit {
           console.log("no file");
           this.alert(true,5);
         }
+        }else{
+          this.alert(true,2);
         }
       }
+    }
+  }
+    createTableDetail2(start, end, productno) {
+      this.productDetail[start].TableDetail.ProductNo = productno;
+      this.service.createProductTableDetail(this.productDetail[start].TableDetail).subscribe(result => {
+        if (start < end) {
+          this.createTableDetail2(start + 1, end, productno);
+        } else {
+          console.log("Product upload pass");
+          window.alert("Successfully");
+          window.location.reload();
+        }
+      });
     }
   }

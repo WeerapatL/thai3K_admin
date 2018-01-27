@@ -20,7 +20,7 @@
           <a id=22 (click)="selectedCategory(22)" [ngClass]="id==22 ? 'list-group-item active':'list-group-item'">สายไฟฟ้าอุตสาหกรรม</a>
           <a id=23 (click)="selectedCategory(23)" [ngClass]="id==23 ? 'list-group-item active':'list-group-item'">อัดฉีดเม็ดโฟมพลาสติก</a>
 
-          <a (click)="selectedBrand('Kanok')" [ngClass]="brand=='Kanok' ? 'list-group-item-header active':'list-group-item-header'">KANOK Products</a>
+          <a (click)="selectedBrand('KANOK Products')" [ngClass]="brand=='KANOK Products' ? 'list-group-item-header active':'list-group-item-header'">KANOK Products</a>
           <a id=9 (click)="selectedCategory(9)" [ngClass]="id==9 ? 'list-group-item active':'list-group-item'">วาล์วน้ำ</a>
           <a id=10 (click)="selectedCategory(10)" [ngClass]="id==10 ? 'list-group-item active':'list-group-item'">สายส่งน้ำ / ตัวกรองน้ำ</a>
           <a id=11 (click)="selectedCategory(11)" [ngClass]="id==11 ? 'list-group-item active':'list-group-item'">หัวฉีด / สปริงเกอร์</a>
@@ -30,7 +30,7 @@
           <a id=15 (click)="selectedCategory(15)" [ngClass]="id==15 ? 'list-group-item active':'list-group-item'">อุปกรณ์ตกแต่งสวน / หมวกนิรภัย</a>
 
 
-          <a (click)="selectedBrand('Nano')" [ngClass]="brand=='Nano' ? 'list-group-item-header active':'list-group-item-header'">Nano Electrics</a>
+          <a (click)="selectedBrand('Nano Electrics')" [ngClass]="brand=='Nano Electrics' ? 'list-group-item-header active':'list-group-item-header'">Nano Electrics</a>
           <a id=16 (click)="selectedCategory(16)" [ngClass]="id==16 ? 'list-group-item active':'list-group-item'">กล่อง / ตู้กันน้ำพลาสติก</a>
           <a id=17 (click)="selectedCategory(17)" [ngClass]="id==17 ? 'list-group-item active':'list-group-item'">แผงไฟฟ้าพลาสติก</a>
           <a id=18 (click)="selectedCategory(18)" [ngClass]="id==18 ? 'list-group-item active':'list-group-item'">สายเคเบิล / รางพลาสติกเก็บสาย</a>
@@ -85,8 +85,8 @@
         <div class="row">
 
           <div class="col-lg-4 col-md-6 mb-4" *ngFor="let p of Product">
-            <div [routerLink]="['../ProductDetail']" class="card h-10">
-              <a href="#">
+            <div  (click)="editProduct(p)" class="card h-10">
+              <a  (click)="editProduct(p)">
                 <img class="card-img-top" src="../../assets/Product/{{p.ProductImgPath}}" alt="">
               </a>
               <div class="card-body">
@@ -101,7 +101,7 @@
                 <small class="card-text">{{p.ProductDesc}}</small>
               </div>
               <div class="card-footer">
-                <button type="button">แก้ไข</button>
+                <button type="button" (click)="editProduct(p)">แก้ไข</button>
                 <button type="button" (click)="deleteProduct(p)" style="background:red;border-width: 1px;color:#fff;">ลบ</button>
                 <!-- <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small> -->
               </div>

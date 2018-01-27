@@ -3,8 +3,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" [routerLink]="['Home']"> THAI &nbsp; 3K &nbsp; Plastic </a>
-      <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" (click)="navResponsive()"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        (click)="navResponsive()" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="navbar-collapse collapse" id="navbarResponsive" style="display:none;">
@@ -21,9 +21,9 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['Contact']" [routerLinkActive]="['active']">Contact</a>
           </li>
-      
 
-                              
+
+
           <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Portfolio
@@ -65,12 +65,39 @@
   <router-outlet>
 
   </router-outlet>
-  <footer class="py-5 bg-dark" style="margin-top : 11px;">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+  <footer class="py-5 bg-dark"> 
+
+      <div class="container" style="text-align:center;"> 
+      <table style="margin-left:20%;margin-right:20%;"> 
+      <tr> 
+      <td style="padding-right:10%;"> 
+      <div class="m-0 text-center text-white" style="display: inline-block;"> 
+      <img src="../assets/Resource/facebook.jpg" style="width:27px;height:25px;">&nbsp;&nbsp; 
+      <p style="color:white;display:inline;">{{company.CompanyFacebook}}</p> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      <img src="../assets/Resource/line.jpg" style="width:27px;height:25px;">&nbsp; 
+      <p style="color:white;display:inline;">{{company.CompanyLine}}</p> 
+      <br> 
+      <img src="../assets/Resource/email.jpg" style="width:27px;height:25px;">&nbsp; 
+      <p style="color:white;display:inline;">{{company.CompanyEmail}}</p> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      <img src="../assets/Resource/phone.jpg" style="width:27px;height:25px;">&nbsp; 
+      <p style="color:white;display:inline;">{{company.CompanyTel}}</p> 
+      <br> 
+      <br> Copyright &copy; Website Name 2017. 
+      <small>address</small> 
+      </div> 
+      </td> 
+      <td style="padding-left:50%;"> 
+      
+      
+      <img style="display: inline-block;" src="../assets/Resource/QRCODE.JPG" style="width:102px;height:102;"> 
+      </td> 
+      </tr> 
+      </table> 
+      </div> 
+      <!-- /.container --> 
+      </footer>
 
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../vendor/jquery/jquery.min.js"></script>

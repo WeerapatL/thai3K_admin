@@ -11,10 +11,11 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { HomepageComponent } from './homepage/homepage.component';
 import { InsertDataComponent } from './insert-data/insert-data.component';
 import { DataService} from './dataprovider/DataService';
-import { Product, TableDetail, Account, Company } from  './dataprovider/DataProvider';
+import { Product, TableDetail, Account, Company, DataParsing } from './dataprovider/DataProvider';
 import { LoginComponent } from './login/login.component';
 // import { AngularFireModule } from 'angularfire2';
 import { AngularFireModule } from 'angularfire2';
+import { LoadingModule } from 'ngx-loading';
 var config = {
   apiKey: "AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U",
   authDomain: "thai3k-webapplication.firebaseapp.com",
@@ -36,6 +37,7 @@ var config = {
   imports: [
     BrowserModule,
     HttpModule,
+    LoadingModule,
     // CollapseModule.forRoot(), 
     FormsModule,
     AngularFireModule.initializeApp(config),
@@ -68,8 +70,7 @@ var config = {
               TableDetail,
               Account,
               Company,
-                           
-              
+              DataParsing,
              ],
   bootstrap: [AppComponent]
 })

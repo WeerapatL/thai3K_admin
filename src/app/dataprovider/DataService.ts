@@ -48,5 +48,12 @@ export class DataService {
   }
   uploadResource(formData:FormData):Observable<any[]>{
     return this.http.post("/api/backend_resource_upload.php",formData).map((response:Response) => response.json());
+  } 
+  deleteTabledetail(Product:Product):Observable<any[]>{
+    return this.http.post("/api/backend_delete_tabledetail.php",Product).map((response:Response)=> response.json());
   }
+  deleteImg(imgpath:any):Observable<any[]>{
+    return this.http.post("/api/backend_delete_img.php",imgpath).map((response:Response)=> response.json());
+  }
+
 }
