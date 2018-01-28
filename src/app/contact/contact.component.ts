@@ -1,9 +1,11 @@
+import { Router } from '@angular/router';
 import { Company } from './../dataprovider/DataProvider';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { DataService } from '../dataprovider/DataService';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+
 
 
 
@@ -16,11 +18,17 @@ export class ContactComponent implements OnInit {
   @ViewChild('fileInput') fileInput;
   company: Company = new Company;
   mapURL: any;
-  constructor(public service: DataService, public sanitizer: DomSanitizer) {
-    this.service.getCompany().subscribe(result => {
-      this.company = result[0];
-      this.mapURL = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?" + this.company.CompanyMap + "&key=AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U");
-    });
+  state = null;
+  constructor(public router: Router, public service: DataService, public sanitizer: DomSanitizer) {
+    this.state = localStorage.getItem("firebase:authUser:AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U:[DEFAULT]");
+    if (this.state != null) {
+      this.service.getCompany().subscribe(result => {
+        this.company = result[0];
+        this.mapURL = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?" + this.company.CompanyMap + "&key=AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U");
+      });
+    } else {
+      this.router.navigate(['']);
+    }
   }
 
   ngOnInit() {

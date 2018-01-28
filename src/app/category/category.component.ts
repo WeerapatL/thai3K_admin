@@ -14,12 +14,13 @@ export class CategoryComponent implements OnInit {
   id: number;
   CategoryComponent
   Product: Product[];
-
+  state = null;
   constructor(private route: ActivatedRoute, public service: DataService, public router: Router) {
-    
+    this.state = localStorage.getItem("firebase:authUser:AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U:[DEFAULT]");
   }
 
   ngOnInit() {
+    if(this.state!=null){
     this.route.params.subscribe(result => {
       this.brand = result['Brand'];
       this.id = result['CategoryID'];
@@ -55,6 +56,9 @@ export class CategoryComponent implements OnInit {
       }
 
     });
+  }else{
+    this.router.navigate(['']);
+  }
 
   }
   getCategoryProduct(CategoryParams: number) {
@@ -70,7 +74,6 @@ export class CategoryComponent implements OnInit {
 
   }
   selectedBrand(BrandParams: string) {
-    // new CategoryComponent(str);
     this.router.navigate(['../Category', { Brand: BrandParams }]);
 
   }

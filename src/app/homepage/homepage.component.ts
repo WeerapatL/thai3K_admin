@@ -2,10 +2,9 @@ import { Product } from './../dataprovider/DataProvider';
 import { DataService } from './../dataprovider/DataService';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-// import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { CategoryComponent } from '../category/category.component';
-// import { ActivatedRoute } from '@angular/router/src/router_state';
+
 
 
 @Component({
@@ -15,15 +14,16 @@ import { CategoryComponent } from '../category/category.component';
 })
 export class HomepageComponent implements OnInit {
   allProduct: Product[] = [];
-
+  state = null;
 
   constructor(
     private route: Router,
     public service: DataService) {
-    // this.service.getProducts().subscribe(result => {
-    //   this.allProduct = result;
-    //   console.log(result);
-    // });
+
+    this.state = localStorage.getItem("firebase:authUser:AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U:[DEFAULT]");  
+    if(this.state==null){
+      this.route.navigate(['']);
+    }
   }
 
   ngOnInit(): void {
@@ -32,7 +32,6 @@ export class HomepageComponent implements OnInit {
 
 
   selectedBrand(BrandParams:string) {
-    // new CategoryComponent(str);
     this.route.navigate(['../Category', { Brand: BrandParams}]);
   }
 

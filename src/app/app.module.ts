@@ -1,3 +1,4 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -13,9 +14,9 @@ import { InsertDataComponent } from './insert-data/insert-data.component';
 import { DataService} from './dataprovider/DataService';
 import { Product, TableDetail, Account, Company, DataParsing } from './dataprovider/DataProvider';
 import { LoginComponent } from './login/login.component';
-// import { AngularFireModule } from 'angularfire2';
 import { AngularFireModule } from 'angularfire2';
 import { LoadingModule } from 'ngx-loading';
+
 var config = {
   apiKey: "AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U",
   authDomain: "thai3k-webapplication.firebaseapp.com",
@@ -33,34 +34,36 @@ var config = {
     HomepageComponent,
     InsertDataComponent,
     LoginComponent,
+
   ],
   imports: [
     BrowserModule,
     HttpModule,
     LoadingModule,
-    // CollapseModule.forRoot(), 
     FormsModule,
     AngularFireModule.initializeApp(config),
-    // ActivatedRoute,
     RouterModule.forRoot([
     
       {
-        path: '',component:LoginComponent
+        path: "",component:LoginComponent
       },
       {
-        path: 'Home',component:HomepageComponent
+        path: "Home",component:HomepageComponent
       },
       {
-        path: 'Contact', component: ContactComponent
+        path: "Contact", component: ContactComponent
       },
       {
-        path: 'Category', component: CategoryComponent
+        path: "Category", component: CategoryComponent
       },
       {
-        path: 'ProductDetail', component: ProductDetailComponent
+        path: "ProductDetail", component: ProductDetailComponent
       },
       {
-        path: 'Insert', component: InsertDataComponent
+        path: "Insert", component: InsertDataComponent
+      },
+      {
+        path: "**", redirectTo:''
       }
     ]),
   ],
@@ -71,6 +74,7 @@ var config = {
               Account,
               Company,
               DataParsing,
+              AngularFireAuth,
              ],
   bootstrap: [AppComponent]
 })

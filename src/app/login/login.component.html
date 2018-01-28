@@ -1,7 +1,8 @@
 <div class="container">
-    <form class="">
-      <input type="text" placeholder="Email"/><br><br>
-      <input type="password" placeholder="Password"/><br><br>
-      <button type="submit">signin</button>
-    </form>
+      <input *ngIf="state==null" type="text"  placeholder="Email"[(ngModel)]="email"/><br><br>
+      <input *ngIf="state==null" type="password"  placeholder="Password" [(ngModel)]="password"/><br><br>
+      <button *ngIf="state==null" type="submit" (click)="login(email,password)">signIn</button>
+      <button *ngIf="state!=null" type="submit" (click)="logout()">signOut</button>
+      <p id="id01" style="display:none;color:red;"></p>
+      <ngx-loading [show]="loading"></ngx-loading>
 </div>

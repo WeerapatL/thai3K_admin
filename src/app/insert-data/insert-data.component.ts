@@ -40,7 +40,12 @@ export class InsertDataComponent implements OnInit {
   runningIndex = 0;
   checkAll: boolean = false;
   loading = false;
+  state = null
   constructor(public service: DataService,public Router:Router) {
+    this.state = localStorage.getItem("firebase:authUser:AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U:[DEFAULT]");  
+    if(this.state==null){
+      this.Router.navigate(['']);
+    }else{
     this.getCategory = new Category();
 
     console.log(this.getCategory.brand);
@@ -58,6 +63,7 @@ export class InsertDataComponent implements OnInit {
     this.t.ProductNo = null;
     this.productDetail.push({ TableDetail: this.t, Status: false });
     this.runningIndex = this.runningIndex + 1;
+    }
   }
 
   ngOnInit() {

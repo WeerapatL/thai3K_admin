@@ -7,6 +7,7 @@ import { DataService } from '../dataprovider/DataService';
 
 
 
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -26,26 +27,32 @@ export class ProductDetailComponent implements OnInit {
   ArrayTableDetail: any[] = [];
   runningIndex: number;
   ProductImgPath: any;
-  loading:boolean = false;
+  loading: boolean = false;
+  state = null;
   constructor(private route: ActivatedRoute, public service: DataService, public router: Router) {
-    this.getCategory = new Category();
-    console.log(this.getCategory.brand);
+    this.state = localStorage.getItem("firebase:authUser:AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U:[DEFAULT]");
+
   }
 
-  ngOnInit() {
-    this.route.params.subscribe(result => {
-      this.Product = JSON.parse(result['Product']);
-      console.log(this.Product);
-      this.brand = this.Product.ProductBrand;
-      this.id = this.Product.ProductCategoryID;
-      for (let i = 0; i < this.Product.TableDetail.length; i++) {
-        this.t = this.Product.TableDetail[i];
-        this.runningIndex = this.Product.TableDetail[i].TableDetailNo;
-        this.ArrayTableDetail.push(this.t);
-      }
-      this.filterCateByBrand();
-    });
-
+  ngOnInit() {    
+    if (this.state != null) {
+      this.getCategory = new Category();
+      console.log(this.getCategory.brand);
+      this.route.params.subscribe(result => {
+        this.Product = JSON.parse(result['Product']);
+        console.log(this.Product);
+        this.brand = this.Product.ProductBrand;
+        this.id = this.Product.ProductCategoryID;
+        for (let i = 0; i < this.Product.TableDetail.length; i++) {
+          this.t = this.Product.TableDetail[i];
+          this.runningIndex = this.Product.TableDetail[i].TableDetailNo;
+          this.ArrayTableDetail.push(this.t);
+        }
+        this.filterCateByBrand();
+      });
+    } else {
+      this.router.navigate(['']);
+    }
   }
   filterCateByBrand() {
     for (let i = 0; i < this.getCategory.brand.length; i++) {
@@ -182,10 +189,10 @@ export class ProductDetailComponent implements OnInit {
 
     if (status) {
       document.getElementById('id01').style.display = 'block'
-      this.loading= false;
+      this.loading = false;
       if (parameter == 1) {//ถ้าหัวตารางว่าง 8 ช่อง
         document.getElementById('id01').innerHTML = 'กรุณากรอกหัวข้อของรายละเอียดสินค้า';
-      
+
       } else if (parameter == 2) {//ถ้าข้อมูลรายละเอียดว่าง 8 ช่อง
         document.getElementById('id01').innerHTML = 'กรุณากรอกรายละเอียดของสินค้าอย่างน้อย 1 ช่อง';
 
@@ -215,7 +222,8 @@ export class ProductDetailComponent implements OnInit {
         this.service.deleteImg({ ProductImgPath: tmpImgPath }).subscribe(res => {
           this.ArrayTableDetail = [];
           console.log(res);
-          this.loading=false;
+        },error=>{console.log('fail')},
+        ()=>{
         });
       }
     });
@@ -226,7 +234,7 @@ export class ProductDetailComponent implements OnInit {
       if (start < end) {
         this.createTableDetail2(start + 1, end, productno);
       } else {
-        this.loading=false;
+        this.loading = false;
         window.location.reload();
       }
     });
