@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { LoadingModule } from 'ngx-loading';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit() {
     if (this.state != null) {
-      this.alert(true, 'You have been login.');
+      this.Router.navigate(['Home']);
     }
   }
   login(email, password) {
@@ -37,7 +38,9 @@ export class LoginComponent implements OnInit {
     ).then(result => {
       if (this.check == "") {
         this.state = localStorage.getItem("firebase:authUser:AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U:[DEFAULT]")
-        this.Router.navigate(['Home']);
+        window.location.reload();
+        
+        
       } else {
         this.alert(true, this.check);
       }

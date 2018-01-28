@@ -16,7 +16,7 @@ import { Product, TableDetail, Account, Company, DataParsing } from './dataprovi
 import { LoginComponent } from './login/login.component';
 import { AngularFireModule } from 'angularfire2';
 import { LoadingModule } from 'ngx-loading';
-
+import { CarouselModule } from 'angular4-carousel';
 var config = {
   apiKey: "AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U",
   authDomain: "thai3k-webapplication.firebaseapp.com",
@@ -41,6 +41,7 @@ var config = {
     HttpModule,
     LoadingModule,
     FormsModule,
+    CarouselModule, 
     AngularFireModule.initializeApp(config),
     RouterModule.forRoot([
     

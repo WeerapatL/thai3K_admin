@@ -18,6 +18,9 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['Contact']" [routerLinkActive]="['active']">Contact</a>
           </li>
+          <li class="nav-item" *ngIf="state!=null">
+              <a class="nav-link" (click)="logout()">Signout</a>
+            </li>
         </ul>
       </div>
     </div>

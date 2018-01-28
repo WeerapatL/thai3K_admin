@@ -70,12 +70,4 @@ export class Category {
         }
     ]
 }
-export class DataParsing {
-    static item:Product;
-    static getProduct():Product{
-        return this.item;
-    }
-    static setProduct(p:Product){
-        this.item = p;
-    }
-}
+export class DataParsing {}
