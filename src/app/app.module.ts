@@ -66,7 +66,7 @@ var config = {
       {
         path: "**", redirectTo:''
       }
-    ]),
+    ])
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: '/' },
               DataService,
