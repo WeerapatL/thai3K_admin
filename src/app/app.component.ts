@@ -46,6 +46,6 @@ export class AppComponent {
         this.state = null;
       }
     });
-    window.location.reload();
+    this.router.navigate(['']);
   }
 }
