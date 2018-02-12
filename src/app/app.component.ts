@@ -7,7 +7,6 @@ import { Company } from './dataprovider/DataProvider';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -46,6 +45,6 @@ export class AppComponent {
         this.state = null;
       }
     });
-    this.router.navigate(['']);
+    window.location.reload();
   }
 }
