@@ -45,6 +45,6 @@ export class AppComponent {
         this.state = null;
       }
     });
-    this.router.navigate(['Home']);
+   location.reload();
   }
 }

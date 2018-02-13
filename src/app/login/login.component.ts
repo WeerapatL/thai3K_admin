@@ -38,9 +38,7 @@ export class LoginComponent implements OnInit {
     ).then(result => {
       if (this.check == "") {
         this.state = localStorage.getItem("firebase:authUser:AIzaSyADaxiMvkYrMU4GROEcs2LmSkBb9wouf6U:[DEFAULT]")
-        window.location.reload();
-        
-        
+        location.reload();    
       } else {
         this.alert(true, this.check);
       }
@@ -72,6 +70,6 @@ export class LoginComponent implements OnInit {
       }
     });
     this.loading = false;
-    window.location.reload();
+    location.reload();
   }
 }

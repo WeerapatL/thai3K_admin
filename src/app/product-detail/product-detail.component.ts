@@ -224,6 +224,8 @@ export class ProductDetailComponent implements OnInit {
           console.log(res);
         },error=>{console.log('fail')},
         ()=>{
+          this.loading = false;
+          window.location.reload();
         });
       }
     });

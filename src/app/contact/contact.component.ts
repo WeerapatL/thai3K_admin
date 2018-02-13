@@ -46,18 +46,40 @@ export class ContactComponent implements OnInit {
           alert = res.toString();
           if (alert === "The file " + "QRCODE.JPG" + " has been uploaded.") {
             c.CompanyQRCode = "QRCODE.JPG";
-            console.log("Successfully");
+            this.service.companyUpdate(c).subscribe(result => {
+              console.log(result);
+            },
+              err => { },
+              () => {
+                setTimeout(() => {
+                  window.alert("Successfully");
+                  location.reload();
+                }, 1000);
+              });
+            
           } else {
-            window.alert(alert);
+            if (window.confirm("Update without image ?")) {
+            this.service.companyUpdate(c).subscribe(result => {
+              console.log(result);
+            },
+              err => { },
+              () => {
+                setTimeout(() => {
+                  window.alert("Successfully");
+                  location.reload();
+                }, 1000);
+              });
+
+          }else{
+
           }
-        });
-      }
-      this.service.companyUpdate(c).subscribe(result => {
-        console.log(result);
-        window.location.reload();
+        }
       });
+      }
+
     } else {
-      window.location.reload();
+
+
     }
   }
 }

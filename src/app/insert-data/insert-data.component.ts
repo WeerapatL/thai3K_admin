@@ -205,6 +205,7 @@ export class InsertDataComponent implements OnInit {
 
           this.service.uploadImage(formData).subscribe(res => {
             alert = res.toString();
+            console.log(alert);
             if (alert === "The file " + this.ProductImgPath + " has been uploaded.") {
               console.log("Picture Upload pass");
               let productInsert: Product = new Product();
@@ -250,7 +251,8 @@ export class InsertDataComponent implements OnInit {
         } else {
           console.log("Product upload pass");
           window.alert("Successfully");
-          window.location.reload();
+          location.reload();
+          
         }
       });
     }
